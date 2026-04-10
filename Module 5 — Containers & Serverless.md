@@ -664,10 +664,10 @@ This covers all major topics from Module 5 in depth. The key themes for SAA are:
 
 A company has a Lambda function that processes customer orders. During peak sales events, the function is invoked thousands of times per second. The team notices that some invocations are failing with a **TooManyRequestsException** error. What is the MOST likely cause?
 
-**A.** The Lambda function has exceeded its 15-minute timeout limit
-**B.** The Lambda function has exceeded the regional concurrency limit
-**C.** The Lambda deployment package is too large
-**D.** The Lambda function ran out of /tmp storage space
+- **A.** The Lambda function has exceeded its 15-minute timeout limit
+- **B.** The Lambda function has exceeded the regional concurrency limit
+- **C.** The Lambda deployment package is too large
+- **D.** The Lambda function ran out of /tmp storage space
 
 ---
 
@@ -698,11 +698,11 @@ A company has a Lambda function that processes customer orders. During peak sale
 
 A solutions architect is designing a system where a Lambda function needs to connect to an **Amazon RDS database inside a private VPC** and also call a **public AWS S3 API endpoint**. Which TWO configurations are required?
 
-**A.** Configure the Lambda function to run inside the VPC by specifying VPC, subnets, and security groups
-**B.** Configure the Lambda function with a public IP address
-**C.** Create a VPC Endpoint for S3 (Gateway Endpoint) or ensure the VPC has a NAT Gateway for internet access
-**D.** Attach an Internet Gateway directly to the Lambda function
-**E.** Deploy Lambda in the same Availability Zone as the RDS instance
+- **A.** Configure the Lambda function to run inside the VPC by specifying VPC, subnets, and security groups
+- **B.** Configure the Lambda function with a public IP address
+- **C.** Create a VPC Endpoint for S3 (Gateway Endpoint) or ensure the VPC has a NAT Gateway for internet access
+- **D.** Attach an Internet Gateway directly to the Lambda function
+- **E.** Deploy Lambda in the same Availability Zone as the RDS instance
 
 ---
 
@@ -740,10 +740,10 @@ A solutions architect is designing a system where a Lambda function needs to con
 
 A company's data processing job takes **25 minutes** to complete. The job needs to process files from S3 and write results to DynamoDB. The team wants a **fully serverless solution with no server management**. What should the solutions architect recommend?
 
-**A.** AWS Lambda with a 25-minute timeout configuration
-**B.** AWS Fargate on Amazon ECS triggered by an S3 event
-**C.** AWS Lambda chained with Step Functions to extend execution time
-**D.** Amazon EC2 Spot Instances with Auto Scaling
+- **A.** AWS Lambda with a 25-minute timeout configuration
+- **B.** AWS Fargate on Amazon ECS triggered by an S3 event
+- **C.** AWS Lambda chained with Step Functions to extend execution time
+- **D.** Amazon EC2 Spot Instances with Auto Scaling
 
 ---
 
@@ -774,12 +774,12 @@ A company's data processing job takes **25 minutes** to complete. The job needs 
 
 A company wants to use **AWS Fargate** instead of **ECS on EC2**. Which THREE scenarios justify choosing Fargate over ECS with EC2 launch type?
 
-**A.** The workload is unpredictable and scales from zero to high traffic multiple times per day
-**B.** The company needs to use Reserved Instances to minimize container costs
-**C.** The development team has no DevOps expertise and wants zero server management
-**D.** The company needs to run Windows Server containers
-**E.** The company is migrating a monolithic application to containers for the first time
-**F.** The workload requires GPU-accelerated computing
+- **A.** The workload is unpredictable and scales from zero to high traffic multiple times per day
+- **B.** The company needs to use Reserved Instances to minimize container costs
+- **C.** The development team has no DevOps expertise and wants zero server management
+- **D.** The company needs to run Windows Server containers
+- **E.** The company is migrating a monolithic application to containers for the first time
+- **F.** The workload requires GPU-accelerated computing
 
 ---
 
@@ -817,10 +817,10 @@ A company wants to use **AWS Fargate** instead of **ECS on EC2**. Which THREE sc
 
 A mobile gaming company uses **API Gateway + Lambda**. Their API receives **50,000 requests per second** during game launch events. Users report seeing **502 Bad Gateway errors** during peak periods. What is the MOST likely cause?
 
-**A.** API Gateway has reached its regional throttle limit of 10,000 RPS
-**B.** Lambda concurrency limit has been reached, causing Lambda to reject requests, which API Gateway reports as 502
-**C.** The SSL certificate on API Gateway has expired
-**D.** The Lambda function's memory setting is too low causing out-of-memory errors
+- **A.** API Gateway has reached its regional throttle limit of 10,000 RPS
+- **B.** Lambda concurrency limit has been reached, causing Lambda to reject requests, which API Gateway reports as 502
+- **C.** The SSL certificate on API Gateway has expired
+- **D.** The Lambda function's memory setting is too low causing out-of-memory errors
 
 ---
 
@@ -857,11 +857,11 @@ Client ← 502 Bad Gateway
 
 A company runs a **containerized microservices application** on Amazon ECS. They want to ensure that sensitive database credentials are NOT hardcoded in the container image or Task Definition. Which TWO approaches should the solutions architect recommend?
 
-**A.** Store credentials in AWS Secrets Manager and reference them in the ECS Task Definition
-**B.** Embed credentials directly in the Dockerfile as environment variables
-**C.** Store credentials in AWS Systems Manager Parameter Store (SecureString) and inject them as environment variables in the Task Definition
-**D.** Store credentials in an S3 bucket and download them at container startup using a shell script
-**E.** Pass credentials as command-line arguments when running the ECS task
+- **A.** Store credentials in AWS Secrets Manager and reference them in the ECS Task Definition
+- **B.** Embed credentials directly in the Dockerfile as environment variables
+- **C.** Store credentials in AWS Systems Manager Parameter Store (SecureString) and inject them as environment variables in the Task Definition
+- **D.** Store credentials in an S3 bucket and download them at container startup using a shell script
+- **E.** Pass credentials as command-line arguments when running the ECS task
 
 ---
 
@@ -897,10 +897,10 @@ A company runs a **containerized microservices application** on Amazon ECS. They
 
 A company uses **AWS Step Functions** to orchestrate an order processing workflow with 8 steps. The workflow runs approximately **2 minutes** and processes **10 million orders per day**. The solutions architect wants to **minimize cost** while maintaining reliability. Which Step Functions workflow type should be used?
 
-**A.** Standard Workflow — because it provides exactly-once execution semantics
-**B.** Express Workflow (Synchronous) — because it's optimized for high-volume, short-duration workloads
-**C.** Standard Workflow — because it supports workflows longer than 5 minutes
-**D.** Express Workflow (Asynchronous) — because it processes the highest volume at lowest cost
+- **A.** Standard Workflow — because it provides exactly-once execution semantics
+- **B.** Express Workflow (Synchronous) — because it's optimized for high-volume, short-duration workloads
+- **C.** Standard Workflow — because it supports workflows longer than 5 minutes
+- **D.** Express Workflow (Asynchronous) — because it processes the highest volume at lowest cost
 
 ---
 
@@ -939,10 +939,10 @@ A company uses **AWS Step Functions** to orchestrate an order processing workflo
 
 A developer is building a REST API using **API Gateway and Lambda**. During testing, they notice that **identical GET requests** are hitting Lambda every time, causing unnecessary database queries and high costs. What is the MOST cost-effective solution?
 
-**A.** Increase Lambda memory to speed up processing
-**B.** Enable API Gateway caching on the stage and configure a TTL
-**C.** Use Lambda Provisioned Concurrency to pre-warm functions
-**D.** Switch from REST API to HTTP API in API Gateway
+- **A.** Increase Lambda memory to speed up processing
+- **B.** Enable API Gateway caching on the stage and configure a TTL
+- **C.** Use Lambda Provisioned Concurrency to pre-warm functions
+- **D.** Switch from REST API to HTTP API in API Gateway
 
 ---
 
@@ -981,11 +981,11 @@ API Gateway Cache MISS? → Invoke Lambda → Store response → Return to clien
 
 A company is migrating to AWS and wants to run their **existing on-premises Kubernetes workloads** on AWS with **minimal code changes**. They currently use **Helm charts, kubectl, and custom Kubernetes operators**. Which TWO services should the solutions architect recommend?
 
-**A.** Amazon ECS with Fargate launch type
-**B.** Amazon EKS with EC2 node groups
-**C.** Amazon EKS with Fargate profiles
-**D.** AWS Lambda with container image support
-**E.** Amazon ECS with EC2 launch type
+- **A.** Amazon ECS with Fargate launch type
+- **B.** Amazon EKS with EC2 node groups
+- **C.** Amazon EKS with Fargate profiles
+- **D.** AWS Lambda with container image support
+- **E.** Amazon ECS with EC2 launch type
 
 ---
 
@@ -1021,10 +1021,10 @@ A company is migrating to AWS and wants to run their **existing on-premises Kube
 
 A financial services company uses **Lambda functions** to process real-time transactions. They are experiencing **cold start latency** of 2-3 seconds that is causing poor user experience. The functions are invoked irregularly throughout the day. What is the BEST solution?
 
-**A.** Increase Lambda function memory allocation to 10 GB
-**B.** Enable Lambda Provisioned Concurrency for the function
-**C.** Deploy the Lambda function inside a VPC for faster networking
-**D.** Use Lambda Layers to reduce the deployment package size
+- **A.** Increase Lambda function memory allocation to 10 GB
+- **B.** Enable Lambda Provisioned Concurrency for the function
+- **C.** Deploy the Lambda function inside a VPC for faster networking
+- **D.** Use Lambda Layers to reduce the deployment package size
 
 ---
 
@@ -1064,12 +1064,12 @@ This process takes 100ms to 3+ seconds depending on runtime and package size.
 
 A company is building a **serverless e-commerce platform**. The architecture includes API Gateway, Lambda, and DynamoDB. A security review identifies several concerns. Which THREE security best practices should the solutions architect implement?
 
-**A.** Assign a unique IAM execution role to each Lambda function with least-privilege permissions
-**B.** Use a single IAM role shared across all Lambda functions for simplicity
-**C.** Enable API Gateway resource policies to restrict API access by IP address or VPC
-**D.** Store API keys and database connection strings in Lambda environment variables encrypted with AWS KMS
-**E.** Enable AWS WAF on API Gateway to protect against common web exploits
-**F.** Disable CloudWatch logging for Lambda to reduce costs
+- **A.** Assign a unique IAM execution role to each Lambda function with least-privilege permissions
+- **B.** Use a single IAM role shared across all Lambda functions for simplicity
+- **C.** Enable API Gateway resource policies to restrict API access by IP address or VPC
+- **D.** Store API keys and database connection strings in Lambda environment variables encrypted with AWS KMS
+- **E.** Enable AWS WAF on API Gateway to protect against common web exploits
+- **F.** Disable CloudWatch logging for Lambda to reduce costs
 
 ---
 
@@ -1114,10 +1114,10 @@ A company is building a **serverless e-commerce platform**. The architecture inc
 
 A company runs a **multi-step data pipeline** using Step Functions and Lambda. The pipeline fails at Step 4 out of 7 steps due to a temporary DynamoDB throttling error. What happens by default in AWS Step Functions Standard Workflow?
 
-**A.** The entire state machine execution fails and all steps must be restarted from Step 1
-**B.** Step Functions retries the failed step based on configured retry logic, then moves to the Catch block if retries are exhausted
-**C.** Step Functions automatically skips the failed step and continues to Step 5
-**D.** Step Functions rolls back all completed steps (Steps 1-3) using compensating transactions
+- **A.** The entire state machine execution fails and all steps must be restarted from Step 1
+- **B.** Step Functions retries the failed step based on configured retry logic, then moves to the Catch block if retries are exhausted
+- **C.** Step Functions automatically skips the failed step and continues to Step 5
+- **D.** Step Functions rolls back all completed steps (Steps 1-3) using compensating transactions
 
 ---
 
@@ -1167,11 +1167,11 @@ Move to Catch block → Execute error handling state
 
 A company is deploying a containerized application on **Amazon ECS with EC2 launch type**. They want to ensure that their containers can access **AWS Secrets Manager** and **Amazon S3** securely without hardcoding credentials. Which TWO configurations enable this?
 
-**A.** Assign an IAM Instance Profile to the EC2 container instances for S3 and Secrets Manager access
-**B.** Create an IAM Task Role in the ECS Task Definition for fine-grained container-level permissions
-**C.** Hardcode AWS access keys in the Docker environment variables
-**D.** Store credentials in ECS cluster configuration
-**E.** Use the EC2 instance's root account credentials
+- **A.** Assign an IAM Instance Profile to the EC2 container instances for S3 and Secrets Manager access
+- **B.** Create an IAM Task Role in the ECS Task Definition for fine-grained container-level permissions
+- **C.** Hardcode AWS access keys in the Docker environment variables
+- **D.** Store credentials in ECS cluster configuration
+- **E.** Use the EC2 instance's root account credentials
 
 ---
 
@@ -1215,10 +1215,10 @@ Task IAM Role → S3 access, Secrets Manager, DynamoDB (task-specific)
 
 A company uses **Amazon API Gateway** to expose their microservices. During a traffic spike, downstream **Lambda functions start throttling**. The product team wants to protect the backend while still providing a response to clients. What feature should the solutions architect implement?
 
-**A.** Enable API Gateway caching to serve stale responses
-**B.** Configure API Gateway Usage Plans with throttling limits and enable Lambda Dead Letter Queues
-**C.** Enable API Gateway throttling at the stage/method level and configure Lambda Reserved Concurrency
-**D.** Deploy a CloudFront distribution in front of API Gateway
+- **A.** Enable API Gateway caching to serve stale responses
+- **B.** Configure API Gateway Usage Plans with throttling limits and enable Lambda Dead Letter Queues
+- **C.** Enable API Gateway throttling at the stage/method level and configure Lambda Reserved Concurrency
+- **D.** Deploy a CloudFront distribution in front of API Gateway
 
 ---
 
@@ -1264,11 +1264,11 @@ Client → API Gateway (throttle at 5000 RPS)
 
 A company stores Docker images in **Amazon ECR**. They want to ensure that images are scanned for vulnerabilities and old images are automatically deleted to reduce storage costs. Which TWO features of Amazon ECR should they enable?
 
-**A.** ECR Image Scanning (on push or scheduled)
-**B.** ECR Cross-Region Replication
-**C.** ECR Lifecycle Policies to automatically expire old images
-**D.** ECR Image Tag Immutability
-**E.** ECR Public Gallery publication
+- **A.** ECR Image Scanning (on push or scheduled)
+- **B.** ECR Cross-Region Replication
+- **C.** ECR Lifecycle Policies to automatically expire old images
+- **D.** ECR Image Tag Immutability
+- **E.** ECR Public Gallery publication
 
 ---
 
@@ -1308,10 +1308,10 @@ A company stores Docker images in **Amazon ECR**. They want to ensure that image
 
 A company wants to build a **real-time bidding system** that processes auction bids. When a bid arrives, the system must: (1) validate the bid, (2) update the current highest bid, (3) notify all auction participants, (4) log the transaction. If any step fails, the previous steps should be compensated. Which architecture BEST handles this?
 
-**A.** Four separate Lambda functions invoked sequentially using Lambda destinations
-**B.** AWS Step Functions with States for each step, Retry configurations, and Catch blocks with compensating Lambda functions
-**C.** Amazon SQS queue feeding into a single Lambda function that handles all four steps
-**D.** API Gateway directly invoking DynamoDB, SNS, and CloudWatch Logs using service integrations
+- **A.** Four separate Lambda functions invoked sequentially using Lambda destinations
+- **B.** AWS Step Functions with States for each step, Retry configurations, and Catch blocks with compensating Lambda functions
+- **C.** Amazon SQS queue feeding into a single Lambda function that handles all four steps
+- **D.** API Gateway directly invoking DynamoDB, SNS, and CloudWatch Logs using service integrations
 
 ---
 
@@ -1355,11 +1355,11 @@ Step Functions provides:
 
 A company's ECS containerized application needs to store **temporary session data** that is shared between multiple container instances running the same ECS service. Which TWO solutions should the solutions architect recommend?
 
-**A.** Store session data in Lambda /tmp storage
-**B.** Use Amazon ElastiCache (Redis) for shared in-memory session storage
-**C.** Use Amazon EFS (Elastic File System) mounted to ECS tasks for shared session storage
-**D.** Store session data in each container's local filesystem
-**E.** Use CloudFront to cache session data at edge locations
+- **A.** Store session data in Lambda /tmp storage
+- **B.** Use Amazon ElastiCache (Redis) for shared in-memory session storage
+- **C.** Use Amazon EFS (Elastic File System) mounted to ECS tasks for shared session storage
+- **D.** Store session data in each container's local filesystem
+- **E.** Use CloudFront to cache session data at edge locations
 
 ---
 
@@ -1400,10 +1400,10 @@ ECS runs multiple task instances for high availability. If session data is store
 
 A company wants to grant a **third-party SaaS vendor** read-only access to specific objects in their **S3 bucket** for data processing. The SaaS vendor uses a Lambda function in **their own AWS account** to access the data. What is the MOST secure and operationally simple approach?
 
-**A.** Create an IAM user in your account, generate access keys, and share them with the vendor
-**B.** Use a Resource-based S3 Bucket Policy that grants the vendor's Lambda execution role cross-account read access
-**C.** Make the S3 bucket public and provide the vendor with the bucket URL
-**D.** Copy the data to the vendor's S3 bucket nightly using a Lambda function
+- **A.** Create an IAM user in your account, generate access keys, and share them with the vendor
+- **B.** Use a Resource-based S3 Bucket Policy that grants the vendor's Lambda execution role cross-account read access
+- **C.** Make the S3 bucket public and provide the vendor with the bucket URL
+- **D.** Copy the data to the vendor's S3 bucket nightly using a Lambda function
 
 ---
 
@@ -1445,12 +1445,12 @@ Vendor's Lambda (Account B, Role ARN: arn:aws:iam::VENDOR::role/LambdaRole)
 
 A solutions architect is reviewing a serverless application. The application uses API Gateway → Lambda → RDS PostgreSQL. During a load test, the team observes that as concurrent Lambda invocations increase, **database connections are exhausted**, causing errors. Which THREE solutions address this problem?
 
-**A.** Use Amazon RDS Proxy between Lambda and RDS to pool and reuse database connections
-**B.** Increase Lambda timeout to 15 minutes to allow connections to complete
-**C.** Store database connection objects outside the Lambda handler function for connection reuse across warm invocations
-**D.** Use Amazon Aurora Serverless v2 instead of RDS to scale connections automatically
-**E.** Switch from RDS to DynamoDB for all database operations
-**F.** Set Lambda Reserved Concurrency to limit the maximum number of concurrent invocations
+- **A.** Use Amazon RDS Proxy between Lambda and RDS to pool and reuse database connections
+- **B.** Increase Lambda timeout to 15 minutes to allow connections to complete
+- **C.** Store database connection objects outside the Lambda handler function for connection reuse across warm invocations
+- **D.** Use Amazon Aurora Serverless v2 instead of RDS to scale connections automatically
+- **E.** Switch from RDS to DynamoDB for all database operations
+- **F.** Set Lambda Reserved Concurrency to limit the maximum number of concurrent invocations
 
 ---
 
@@ -1505,10 +1505,10 @@ def lambda_handler(event, context):
 
 A company runs a **containerized batch processing system** on Amazon ECS. The jobs are compute-intensive, run for 4-6 hours, and process large datasets. Cost is a primary concern. The workload can tolerate interruptions with checkpointing. What is the MOST cost-effective architecture?
 
-**A.** ECS with Fargate launch type using On-Demand pricing
-**B.** ECS with EC2 launch type using On-Demand instances
-**C.** ECS with EC2 launch type using Spot Instances with checkpointing and Spot interruption handling
-**D.** Amazon EKS with Fargate profiles for all batch jobs
+- **A.** ECS with Fargate launch type using On-Demand pricing
+- **B.** ECS with EC2 launch type using On-Demand instances
+- **C.** ECS with EC2 launch type using Spot Instances with checkpointing and Spot interruption handling
+- **D.** Amazon EKS with Fargate profiles for all batch jobs
 
 ---
 
@@ -1541,29 +1541,3 @@ A company runs a **containerized batch processing system** on Amazon ECS. The jo
 
 ---
 
-## 📊 Score Tracker
-
-| Q# | Topic | Difficulty | Type |
-|---|---|---|---|
-| 1 | Lambda Throttling | Medium | Single |
-| 2 | Lambda VPC Networking | Hard | Multi |
-| 3 | Lambda Timeout Limit | Easy | Single |
-| 4 | Fargate Use Cases | Medium | Multi |
-| 5 | API Gateway 502 Errors | Hard | Single |
-| 6 | Container Secrets Management | Medium | Multi |
-| 7 | Step Functions Workflow Types | Hard | Single |
-| 8 | API Gateway Caching | Medium | Single |
-| 9 | EKS vs ECS Migration | Medium | Multi |
-| 10 | Lambda Cold Starts | Medium | Single |
-| 11 | Serverless Security | Hard | Multi |
-| 12 | Step Functions Error Handling | Hard | Single |
-| 13 | ECS IAM Roles | Hard | Multi |
-| 14 | API Gateway Throttling | Hard | Single |
-| 15 | ECR Features | Medium | Multi |
-| 16 | Step Functions Orchestration | Hard | Single |
-| 17 | ECS Shared Storage | Medium | Multi |
-| 18 | Cross-Account S3 Access | Hard | Single |
-| 19 | Lambda + RDS Connections | Hard | Multi |
-| 20 | ECS Spot Batch Processing | Hard | Single |
-
-**Score: 18-20 ✅ Exam Ready | 14-17 🟡 Review weak areas | <14 🔴 Re-study module**
