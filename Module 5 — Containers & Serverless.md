@@ -584,21 +584,21 @@ EventBridge (trigger) → Step Functions → ECS Fargate Task (heavy processing)
 
 ### Quick-Fire Facts
 
-✅ Lambda max runtime = **15 minutes**
-✅ Lambda scales to **thousands of concurrent executions**
-✅ Lambda pays per **request + duration (per 1ms)**
-✅ Lambda Layers = **shared dependencies as ZIP archives**
-✅ REST uses **HTTP** as transport protocol
-✅ REST is **stateless** — no session stored on server
-✅ API Gateway = **fully managed API management** (scales automatically)
-✅ Containers = **OS-level virtualization** (lighter than VMs)
-✅ Docker = **platform for building and running containers**
-✅ ECS = **AWS-native container orchestration**
-✅ Fargate = **serverless container runtime** (no EC2 management)
-✅ EKS = **managed Kubernetes on AWS**
-✅ ECR = **private Docker container registry on AWS**
-✅ Step Functions = **serverless workflow orchestration** (up to 1 year)
-✅ Step Functions Express = **high-volume, max 5 min** workflows
+- ✅ Lambda max runtime = **15 minutes**
+- ✅ Lambda scales to **thousands of concurrent executions**
+- ✅ Lambda pays per **request + duration (per 1ms)**
+- ✅ Lambda Layers = **shared dependencies as ZIP archives**
+- ✅ REST uses **HTTP** as transport protocol
+- ✅ REST is **stateless** — no session stored on server
+- ✅ API Gateway = **fully managed API management** (scales automatically)
+- ✅ Containers = **OS-level virtualization** (lighter than VMs)
+- ✅ Docker = **platform for building and running containers**
+- ✅ ECS = **AWS-native container orchestration**
+- ✅ Fargate = **serverless container runtime** (no EC2 management)
+- ✅ EKS = **managed Kubernetes on AWS**
+- ✅ ECR = **private Docker container registry on AWS**
+- ✅ Step Functions = **serverless workflow orchestration** (up to 1 year)
+- ✅ Step Functions Express = **high-volume, max 5 min** workflows
 
 ### Common Exam Scenarios & Answers
 
