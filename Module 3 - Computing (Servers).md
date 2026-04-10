@@ -1,5 +1,4 @@
-# AWS EC2 (Elastic Compute Cloud) - Deep Dive Guide for SAA Certification
-
+# Module 3: Computing (Servers)
 ---
 
 ## TABLE OF CONTENTS
@@ -1582,7 +1581,6 @@ AUTOMATION:
 
 ## Comprehensive Exam Traps Summary
 
-```
 TRAP 1 - INSTANCE PERFORMANCE:
 Q: "Why does newer generation instance perform better?"
 WRONG: "Larger size" / CORRECT: "Better hypervisor (Nitro)"
@@ -1626,7 +1624,6 @@ WRONG: "Always AWS" / CORRECT: "Depends - check root cause"
 TRAP 10 - IAM ROLES:
 Q: "Should I embed credentials in user data?"
 WRONG: "Yes if encrypted" / CORRECT: "NEVER - use IAM roles"
-```
 
 ---
 
@@ -1635,7 +1632,7 @@ WRONG: "Yes if encrypted" / CORRECT: "NEVER - use IAM roles"
 ## Questions with Detailed Scenarios
 
 ### MCQ #1 - Instance Type Selection (Medium)
-```
+
 SCENARIO:
 Your organization is migrating a legacy data warehouse to AWS. The application:
 - Performs analytical queries on 2TB dataset
@@ -1646,10 +1643,10 @@ Your organization is migrating a legacy data warehouse to AWS. The application:
 
 Which instance type and storage combination is MOST suitable?
 
-A) c5.24xlarge with gp2 EBS (1TB provisioned for IOPS)
-B) r5.24xlarge with io2 EBS (500GB, 50:1 ratio)
-C) r5.24xlarge with gp3 EBS (500GB, 20,000 IOPS provisioned)
-D) i3.8xlarge with instance store
+- A) c5.24xlarge with gp2 EBS (1TB provisioned for IOPS)
+- B) r5.24xlarge with io2 EBS (500GB, 50:1 ratio)
+- C) r5.24xlarge with gp3 EBS (500GB, 20,000 IOPS provisioned)
+- D) i3.8xlarge with instance store
 
 CORRECT ANSWER: C
 ─────────────────────────────────────────────────────────────
@@ -1686,10 +1683,12 @@ EXAM TIPS:
 - gp3 > gp2 for new workloads
 - Provision IOPS independently on gp3
 - io2 only when need 50:1+ ratio with smaller storage
-```
+
+
+---
 
 ### MCQ #2 - Storage Persistence (Hard)
-```
+
 SCENARIO:
 Your application runs on an i3.8xlarge instance with 8 x 1.9TB NVMe 
 Instance Store volumes configured in RAID 0. The instance also has:
@@ -1700,10 +1699,10 @@ Instance Store volumes configured in RAID 0. The instance also has:
 During a weekend, you Stop and then Start the instance. What happens 
 to each storage type?
 
-A) Instance Store data persists (RAID 0 maintains), EBS data persists
-B) Instance Store data lost, EBS data persists, RDS data intact
-C) Instance Store data persists, EBS lost, RDS lost
-D) Both storage types lost, RDS persists
+- A) Instance Store data persists (RAID 0 maintains), EBS data persists
+- B) Instance Store data lost, EBS data persists, RDS data intact
+- C) Instance Store data persists, EBS lost, RDS lost
+- D) Both storage types lost, RDS persists
 
 CORRECT ANSWER: B
 ─────────────────────────────────────────────────────────────
@@ -1746,10 +1745,11 @@ EXAM TRAP:
 "Instance Store is fast so data stays"? NO!
 "RAID protects Instance Store"? NO! It's ephemeral regardless
 "Stop = pause"? NO! It's deallocated (but EBS survives)
-```
+
+---
 
 ### MCQ #3 - Networking and Security Groups (Medium)
-```
+
 SCENARIO:
 You have a 3-tier application:
 - Web tier: 5 instances in public subnet, sg-web
@@ -1764,25 +1764,25 @@ Requirements:
 
 Which security group rules are needed? (Choose 2)
 
-A) Web tier:
+- A) Web tier:
    Inbound: HTTP (0.0.0.0/0), HTTPS (0.0.0.0/0)
    App tier:
    Inbound: TCP 8080 from sg-web
    
-B) Web tier:
+- B) Web tier:
    Inbound: HTTP (0.0.0.0/0), HTTPS (0.0.0.0/0)
    Inbound: TCP 3306 from sg-app (for replies)
    App tier:
    Inbound: TCP 8080 from sg-web
 
-C) Web tier:
+- C) Web tier:
    Inbound: HTTP/HTTPS from 0.0.0.0/0
    Outbound: TCP 8080 to sg-app
    App tier:
    Inbound: TCP 8080 from sg-web
    Outbound: TCP 3306 to RDS security group
    
-D) Web tier:
+- D) Web tier:
    Inbound: HTTP/HTTPS (0.0.0.0/0)
    Outbound: TCP 8080 to sg-app
    App tier:
@@ -1837,10 +1837,10 @@ WRONG - You need both directions for multi-tier
 Stateful only helps with return traffic to same connection
 
 Correct answer: D (or C if DB SG isn't shown in options)
-```
+---
 
 ### MCQ #4 - IAM Roles vs Credentials (Hard - Common Exam Question)
-```
+
 SCENARIO:
 Your development team wants to deploy a Python application to EC2 
 that reads from S3, writes to DynamoDB, and calls an external API.
@@ -1850,10 +1850,10 @@ easier deployment. Each developer gets their own long-lived access key."
 
 Which statement about this approach is correct?
 
-A) This is best practice if credentials are encrypted in environment
-B) This violates AWS security best practices and should use IAM roles instead
-C) This is acceptable for development, but use roles for production
-D) Environment variables are safer than hardcoding in source code
+- A) This is best practice if credentials are encrypted in environment
+- B) This violates AWS security best practices and should use IAM roles instead
+- C) This is acceptable for development, but use roles for production
+- D) Environment variables are safer than hardcoding in source code
 
 CORRECT ANSWER: B
 ─────────────────────────────────────────────────────────────
@@ -1920,10 +1920,11 @@ Questions like "where should credentials be stored" always test:
 ❌ Hardcoded in code (wrong)
 ❌ Environment variables (wrong)
 ❌ Secrets Manager (right but not on EC2 instance)
-```
+
+---
 
 ### MCQ #5 - Elastic IP and Cost (Hard - Cost Optimization)
-```
+
 SCENARIO:
 A company has allocated 20 Elastic IPs in us-east-1 region:
 - 12 EIPs attached to running EC2 instances (production)
@@ -1936,10 +1937,10 @@ per month (vs if only used when needed)?
 
 Assume: EIP hourly charge = $0.005/hour
 
-A) $0/month (no charge for EIPs if allocated)
-B) $3.60/month (5 stopped instances × $0.005 × 730 hours ÷ 12)
-C) $73.00/month (8 unused EIPs × $0.005 × 730 hours)
-D) $438.00/month (40 unused EIPs, some shared among instances)
+- A) $0/month (no charge for EIPs if allocated)
+- B) $3.60/month (5 stopped instances × $0.005 × 730 hours ÷ 12)
+- C) $73.00/month (8 unused EIPs × $0.005 × 730 hours)
+- D) $438.00/month (40 unused EIPs, some shared among instances)
 
 CORRECT ANSWER: C
 ─────────────────────────────────────────────────────────────
@@ -2009,10 +2010,11 @@ Cost optimization questions test:
 ✓ Know the rates
 ✓ Identify waste
 ✓ Recommend remediation (delete unused EIPs)
-```
+
+---
 
 ### MCQ #6 - User Data and Security (Medium - Tricky)
-```
+
 SCENARIO:
 Your deployment team created a user data script for database servers:
 
@@ -2030,10 +2032,10 @@ mysql -e "CREATE USER 'backup'@'%' IDENTIFIED BY 'BackupPass123';"
 
 What is the PRIMARY security concern with this approach?
 
-A) Passwords should be hashed using SHA-256 before using
-B) User data is visible to anyone with EC2 DescribeInstances permission
-C) Root password shouldn't be set in user data; use RDS instead
-D) MySQL should bind to 127.0.0.1, not accept remote connections
+- A) Passwords should be hashed using SHA-256 before using
+- B) User data is visible to anyone with EC2 DescribeInstances permission
+- C) Root password shouldn't be set in user data; use RDS instead
+- D) MySQL should bind to 127.0.0.1, not accept remote connections
 
 CORRECT ANSWER: B
 ─────────────────────────────────────────────────────────────
@@ -2127,10 +2129,11 @@ EXAM TRAP:
 WRONG - User data is plaintext, encryption would help but still not best practice
 "Passwords are only visible on the instance"?
 WRONG - They're visible to all users with DescribeInstances permission
-```
+
+---
 
 ### MCQ #7 - Instance Store in Auto-Scaling (Hard)
-```
+
 SCENARIO:
 Your architecture uses an Auto Scaling Group with EC2 instances 
 that have both:
@@ -2145,10 +2148,10 @@ by subsequent requests. The Auto Scaling Group:
 
 What happens to the cached data during scale-up events?
 
-A) Instance Store data persists and is available immediately
-B) Instance Store data is transferred to the new instance via EBS snapshot
-C) Each new instance has fresh Instance Store with no previous data
-D) Instance Store data is cached in EBS for auto-recovery
+- A) Instance Store data persists and is available immediately
+- B) Instance Store data is transferred to the new instance via EBS snapshot
+- C) Each new instance has fresh Instance Store with no previous data
+- D) Instance Store data is cached in EBS for auto-recovery
 
 CORRECT ANSWER: C
 ─────────────────────────────────────────────────────────────
@@ -2220,10 +2223,11 @@ For SAA Exam: Recognize that
 ✓ Instance Store lost per instance
 ✓ Instances in ASG don't share Instance Store data
 ✓ Use ElastiCache or EBS for shared data
-```
+
+---
 
 ### MCQ #8 - Security Groups and Stateful Behavior (Medium - Trick)
-```
+
 SCENARIO:
 Your database security group has:
 
@@ -2241,10 +2245,10 @@ to a database server on port 3306. The connection fails with
 Security group configuration is confirmed correct. What could 
 be the issue?
 
-A) Security group must explicitly allow MySQL in OUTBOUND from app servers
-B) Security group rules are correct; problem is elsewhere (network layer)
-C) Application server security group needs explicit OUTBOUND MySQL rule
-D) Database security group needs explicit OUTBOUND rule for return traffic
+- A) Security group must explicitly allow MySQL in OUTBOUND from app servers
+- B) Security group rules are correct; problem is elsewhere (network layer)
+- C) Application server security group needs explicit OUTBOUND MySQL rule
+- D) Database security group needs explicit OUTBOUND rule for return traffic
 
 CORRECT ANSWER: B
 ─────────────────────────────────────────────────────────────
@@ -2327,10 +2331,11 @@ Questions testing this concept often have:
 1. "Confirm SG is configured correctly"
 2. "Traffic still fails"
 3. Answer: "Problem elsewhere" or "Check NACL/routing/app"
-```
+
+---
 
 ### MCQ #9 - Hibernation Prerequisites (Hard)
-```
+
 SCENARIO:
 Your organization wants to enable hibernation on a new t3.large 
 instance to save money on non-production development server that:
@@ -2342,10 +2347,10 @@ instance to save money on non-production development server that:
 You attempt to enable hibernation but receive an error during 
 launch. What is the most likely reason?
 
-A) t3 instance family doesn't support hibernation
-B) Root volume size (100GB) is smaller than RAM (6GB) - need ≥6GB
-C) Root volume is not encrypted
-D) Amazon Linux 2 doesn't support hibernation
+- A) t3 instance family doesn't support hibernation
+- B) Root volume size (100GB) is smaller than RAM (6GB) - need ≥6GB
+- C) Root volume is not encrypted
+- D) Amazon Linux 2 doesn't support hibernation
 
 CORRECT ANSWER: C
 ─────────────────────────────────────────────────────────────
@@ -2434,168 +2439,173 @@ Hibernation questions test if you know:
 ✓ Most commonly tested: Encryption requirement
 ✓ Second common: Instance type support
 ✓ Less common but testable: EBS vs instance store
-```
-
-### MCQ #10-20: (Provided in Concise Format Below)
 
 ---
 
 ## MCQ #10: EBS vs Instance Store Decision
-```
+
 SCENARIO: Application needs 500GB of data with 100,000 IOPS 
 throughput for financial trading system. Data must persist 
 after instance stop. What's the correct approach?
 
-A) io1 EBS (256GB volume, 50:1 ratio = 12,800 IOPS max)
-B) io2 with 1,000:1 ratio (enables higher IOPS on smaller volumes)
-C) Instance Store RAID 0 with replication
-D) gp3 with provisioned IOPS/throughput
+- A) io1 EBS (256GB volume, 50:1 ratio = 12,800 IOPS max)
+- B) io2 with 1,000:1 ratio (enables higher IOPS on smaller volumes)
+- C) Instance Store RAID 0 with replication
+- D) gp3 with provisioned IOPS/throughput
 
 ANSWER: B/D (B for 100K+ IOPS, D if < 64K IOPS sufficient)
 KEY: io2 Block Express enables 64,000 IOPS on smaller volumes
-```
+
+---
 
 ### MCQ #11: EIP and Reserved Instance Interaction
-```
+
 SCENARIO: EIP attached to instance with 1-year Reserved 
 Instance. During month 3, instance stops for 2 weeks. Cost?
 
-A) RI covers cost, no charges for stopped period
-B) RI charge continues, EIP incurs additional hourly charge
-C) Both RI and compute charges stop, EIP still charged hourly
-D) No charges (EIP + RI both inactive)
+- A) RI covers cost, no charges for stopped period
+- B) RI charge continues, EIP incurs additional hourly charge
+- C) Both RI and compute charges stop, EIP still charged hourly
+- D) No charges (EIP + RI both inactive)
 
 ANSWER: B
 KEY: RI continues regardless of instance state, EIP charged separately
-```
+
+---
 
 ### MCQ #12: Security Group Cross-Region
-```
 SCENARIO: Creating Auto Scaling Group in us-west-2 using 
 security group "sg-prod" from us-east-1.
 
-A) Can reference the SG ID directly (sg-xxx)
-B) Must recreate the SG in us-west-2
-C) Can import SG from us-east-1
-D) Requires VPC peering to reference cross-region
+- A) Can reference the SG ID directly (sg-xxx)
+- B) Must recreate the SG in us-west-2
+- C) Can import SG from us-east-1
+- D) Requires VPC peering to reference cross-region
 
 ANSWER: B
 KEY: Security groups are region-scoped resources
-```
+
+---
 
 ### MCQ #13: Metadata vs User Data Visibility
-```
+
 SCENARIO: Developer needs instance ID and IAM role name 
 during application initialization. What's the secure way?
 
-A) Put in user data script
-B) Query metadata endpoint
-C) Check environment variables
-D) Create configuration file
+- A) Put in user data script
+- B) Query metadata endpoint
+- C) Check environment variables
+- D) Create configuration file
 
 ANSWER: B
 KEY: Metadata is queryable anytime, safe for non-secret info
-```
+
+---
 
 ### MCQ #14: Instance Type and vCPU Limits
-```
+
 SCENARIO: Application uses threads = vCPU × 3. Planning for 
 m5.2xlarge (8 vCPU). How many threads?
 
-A) 8 threads (1:1 mapping)
-B) 24 threads (8 vCPU × 3)
-C) 16 threads (hyperthreading)
-D) Depends on CPU generation
+- A) 8 threads (1:1 mapping)
+- B) 24 threads (8 vCPU × 3)
+- C) 16 threads (hyperthreading)
+- D) Depends on CPU generation
 
 ANSWER: B
 KEY: vCPU allocation isn't affected by application design
-```
+
+---
 
 ### MCQ #15: Shared Responsibility - Data Encryption
-```
+
 SCENARIO: Customer data in S3 encrypted with KMS. EC2 reads 
 S3 data. Who is responsible for encryption key management?
 
-A) AWS manages KMS keys automatically
-B) Customer must create and manage KMS key
-C) Shared (AWS creates, customer rotates)
-D) Not needed (S3 provides encryption)
+- A) AWS manages KMS keys automatically
+- B) Customer must create and manage KMS key
+- C) Shared (AWS creates, customer rotates)
+- D) Not needed (S3 provides encryption)
 
 ANSWER: B
 KEY: Customer owns encryption key lifecycle (create, rotate, audit)
-```
+
+---
 
 ### MCQ #16: Stop vs Reboot Impact
-```
+
 SCENARIO: Instance has EIP, public IP, and 5GB Instance Store 
 cache. Reboot (not stop) is performed.
 
 What persists?
-A) EIP, public IP, instance store data
-B) EIP only
-C) EIP and public IP only
-D) EIP, public IP, instance store, same hardware
+- A) EIP, public IP, instance store data
+- B) EIP only
+- C) EIP and public IP only
+- D) EIP, public IP, instance store, same hardware
 
 ANSWER: D
 KEY: Reboot = OS level, keeps all hardware/network settings
-```
+
+---
 
 ### MCQ #17: IMDS and Credentials
-```
+
 SCENARIO: Malicious JavaScript in web application queries 
 metadata endpoint. Risk?
 
-A) Safe - requires cryptographic signatures
-B) Risk - can access temporary credentials for AWS services
-C) Safe - metadata blocked from applications
-D) Risk depends on IMDSv2 enabled
+- A) Safe - requires cryptographic signatures
+- B) Risk - can access temporary credentials for AWS services
+- C) Safe - metadata blocked from applications
+- D) Risk depends on IMDSv2 enabled
 
 ANSWER: B (mitigated by D)
 KEY: Metadata accessible to any code on instance, use IMDSv2
-```
+
+---
 
 ### MCQ #18: Placement Groups and Instance Types
-```
+
 SCENARIO: Using placement group for low-latency cluster computing 
 with h1.4xlarge instances. What's the primary concern?
 
-A) h1 (storage optimized) bad choice, use c5 (compute)
-B) Placement groups require same instance type in group
-C) Placement groups don't guarantee placement (best effort)
-D) h1.4xlarge not supported in placement groups
+- A) h1 (storage optimized) bad choice, use c5 (compute)
+- B) Placement groups require same instance type in group
+- C) Placement groups don't guarantee placement (best effort)
+- D) h1.4xlarge not supported in placement groups
 
 ANSWER: B
 KEY: Placement group enforces same instance type for consistency
-```
+
+---
 
 ### MCQ #19: Cost Optimization - Underutilized Instance
-```
+
 SCENARIO: t3.xlarge (4 vCPU, 16GB RAM) running CPU: 5%, 
 RAM: 8%. Size it optimally.
 
-A) t3.micro (better cost)
-B) t3.small with unlimited mode
-C) m5.large (balanced, cheaper large)
-D) Keep same size (burstable good for variable load)
+- A) t3.micro (better cost)
+- B) t3.small with unlimited mode
+- C) m5.large (balanced, cheaper large)
+- D) Keep same size (burstable good for variable load)
 
 ANSWER: B (or A if truly minimal)
 KEY: Use AWS Compute Optimizer for recommendations
-```
+
+---
 
 ### MCQ #20: Instance Termination and Data Loss
-```
+
 SCENARIO: Application stores temp files on Instance Store. 
 DeleteOnTermination set to False on EBS volume. Instance 
 terminated unexpectedly. What happens?
 
-A) Instance Store lost, EBS retained
-B) EBS deleted (default), Instance Store lost
-C) Both retained for recovery
-D) Depends on termination cause
+- A) Instance Store lost, EBS retained
+- B) EBS deleted (default), Instance Store lost
+- C) Both retained for recovery
+- D) Depends on termination cause
 
 ANSWER: A
 KEY: DeleteOnTermination=False preserves EBS, not Instance Store
-```
 
 ---
 
@@ -2672,23 +2682,3 @@ COMMON TRAPS:
 □ RI covers cost even if instance stopped
 ```
 
-### Practice Strategy
-1. **Do 5 full practice tests** before exam
-2. **Review every wrong answer** - why, not just that
-3. **Time yourself** - 130 minutes for 65 questions
-4. **Focus on traps** - these questions deliberately test misunderstandings
-5. **Read questions carefully** - "Which of the following" vs "Which statement"
-
----
-
-## CONCLUSION
-
-This comprehensive guide covers all EC2 topics for SAA certification with:
-- **Deep dives** on architecture and concepts
-- **Practical scenarios** reflecting real-world situations
-- **Mindmaps & flowcharts** for visual learning
-- **Exam traps** to avoid common mistakes
-- **20 detailed MCQs** with explanations
-- **Decision trees** for practical choices
-
-**Good luck on your SAA exam!**
