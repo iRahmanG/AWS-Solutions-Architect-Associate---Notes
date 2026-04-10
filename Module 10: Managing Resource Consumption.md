@@ -1,4 +1,4 @@
-# AWS Module 10: Managing Resource Consumption
+# Module 10 - Managing Resource Consumption
 
 ---
 
