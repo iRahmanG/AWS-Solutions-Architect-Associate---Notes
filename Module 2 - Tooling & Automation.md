@@ -1,10 +1,7 @@
 # AWS Module 2: Tooling & Automation — Deep Dive for SAA Exam
-## Complete Study Guide + Mind Map + MCQs
-
----
 
 
-## 1. AWS Systems Manager (SSM) — Complete Breakdown
+## 1. AWS Systems Manager (SSM)
 
 AWS Systems Manager is a unified interface for managing your AWS and on-premises infrastructure. Think of it as the "remote control" for your entire fleet of EC2 instances and servers.
 
@@ -178,7 +175,7 @@ SDKs enable you to integrate AWS services into your applications using native la
 
 ---
 
-## 4. AWS CloudFormation — Deep Dive
+## 4. AWS CloudFormation
 
 CloudFormation is Infrastructure as Code (IaC) — you define your entire AWS environment in a template and CloudFormation creates/updates/deletes it as a unit called a **Stack**.
 
@@ -219,7 +216,7 @@ A CloudFormation template has these sections:
 
 ---
 
-## 5. AWS OpsWorks — Deep Dive
+## 5. AWS OpsWorks
 
 OpsWorks is a configuration management service based on Chef and Puppet. It enables infrastructure as code through Chef recipes and Puppet manifests.
 
@@ -237,7 +234,7 @@ OpsWorks is a configuration management service based on Chef and Puppet. It enab
 
 ---
 
-## 6. Amazon S3 Static Website Hosting — Deep Dive
+## 6. Amazon S3 Static Website Hosting
 
 Amazon S3 can serve static content (HTML, CSS, JavaScript, images) directly to end users, without any web servers.
 
@@ -338,8 +335,6 @@ Two formats exist depending on region:
 
 # 20 Scenario-Based MCQs
 
----
-
 **Q1.** A company runs 2,000 Windows EC2 instances across 5 AWS regions. Their security team requires that all instances be patched with approved security patches every Saturday between 1am–3am, and that a compliance report be generated automatically. The company does NOT want to open any inbound ports on their instances. Which combination of services meets ALL requirements?
 
 - A) AWS Inspector + Scheduled Lambda function + CloudWatch Events
@@ -356,11 +351,11 @@ Explanation: Both B and C technically work. B uses the native Patch Manager work
 
 **Q2.** A solutions architect needs to allow developers to access EC2 instances in private subnets for debugging, without exposing bastion hosts, without managing SSH keys, and while logging all commands for a compliance audit. The instances do NOT have internet access. What is the MINIMUM configuration required?
 
-A) Create a bastion host in a public subnet and configure CloudTrail
-B) Enable SSM Session Manager and create VPC endpoints for SSM, SSM Messages, and EC2 Messages; configure CloudWatch Logs for session logging
-C) Enable SSM Session Manager with an Internet Gateway and configure S3 bucket for logs
-D) Use EC2 Instance Connect and send logs to CloudTrail
-E) Use AWS Systems Manager with only the SSM VPC endpoint
+- A) Create a bastion host in a public subnet and configure CloudTrail
+- B) Enable SSM Session Manager and create VPC endpoints for SSM, SSM Messages, and EC2 Messages; configure CloudWatch Logs for session logging
+- C) Enable SSM Session Manager with an Internet Gateway and configure S3 bucket for logs
+- D) Use EC2 Instance Connect and send logs to CloudTrail
+- E) Use AWS Systems Manager with only the SSM VPC endpoint
 
 **Correct: B**
 
@@ -370,11 +365,11 @@ Explanation: Session Manager for private instances without internet requires THR
 
 **Q3.** A company stores database credentials in AWS SSM Parameter Store as SecureString parameters. An EC2 instance running an application needs to retrieve these credentials at startup. The application is failing with an "AccessDeniedException" error. What are the TWO most likely causes?
 
-A) The EC2 instance does not have an IAM role attached
-B) The IAM role lacks `ssm:GetParameter` permission
-C) The parameter is stored in the wrong AWS region
-D) The IAM role lacks `kms:Decrypt` permission for the KMS key used to encrypt the SecureString
-E) SSM Parameter Store does not support SecureString parameters on EC2
+- A) The EC2 instance does not have an IAM role attached
+- B) The IAM role lacks `ssm:GetParameter` permission
+- C) The parameter is stored in the wrong AWS region
+- D) The IAM role lacks `kms:Decrypt` permission for the KMS key used to encrypt the SecureString
+- E) SSM Parameter Store does not support SecureString parameters on EC2
 
 **Correct: A and D** (or B and D)
 
@@ -384,11 +379,11 @@ Explanation: To retrieve a SecureString parameter you need BOTH: (1) `ssm:GetPar
 
 **Q4.** A company wants to host a static marketing website for global customers. The solution must support HTTPS, serve content with low latency worldwide, minimize operational overhead, and remain cost-effective. The website contains only HTML, CSS, images, and JavaScript. Which architecture is BEST?
 
-A) EC2 Auto Scaling Group + Application Load Balancer + Route 53
-B) S3 static website hosting + CloudFront distribution with SSL/TLS certificate from ACM + Route 53
-C) S3 static website hosting + Route 53 with latency-based routing
-D) Elastic Beanstalk + CloudFront + Route 53
-E) Lambda@Edge + S3 + CloudFront
+- A) EC2 Auto Scaling Group + Application Load Balancer + Route 53
+- B) S3 static website hosting + CloudFront distribution with SSL/TLS certificate from ACM + Route 53
+- C) S3 static website hosting + Route 53 with latency-based routing
+- D) Elastic Beanstalk + CloudFront + Route 53
+- E) Lambda@Edge + S3 + CloudFront
 
 **Correct: B**
 
@@ -398,11 +393,11 @@ Explanation: S3 + CloudFront is the canonical serverless static website architec
 
 **Q5.** A company is deploying infrastructure for a multi-tier web application using CloudFormation. During a stack update to add a new RDS instance, the CloudFormation update fails at the EC2 Auto Scaling Group modification step. What happens to the EXISTING RDS instance that was SUCCESSFULLY created before the failure?
 
-A) The RDS instance remains running — partial updates are kept
-B) CloudFormation rolls back the entire stack, deleting the new RDS instance
-C) CloudFormation marks the stack as UPDATE_ROLLBACK_FAILED and requires manual intervention
-D) The RDS instance is stopped but not deleted
-E) CloudFormation creates a snapshot of the RDS instance before deleting it
+- A) The RDS instance remains running — partial updates are kept
+- B) CloudFormation rolls back the entire stack, deleting the new RDS instance
+- C) CloudFormation marks the stack as UPDATE_ROLLBACK_FAILED and requires manual intervention
+- D) The RDS instance is stopped but not deleted
+- E) CloudFormation creates a snapshot of the RDS instance before deleting it
 
 **Correct: B**
 
@@ -412,11 +407,11 @@ Explanation: When a CloudFormation update fails, it automatically attempts to ro
 
 **Q6.** A security team needs to ensure that all EC2 instances in a production account always have the CloudWatch agent installed and properly configured, even if an administrator manually removes it. Which service provides the MOST appropriate solution?
 
-A) AWS Config with auto-remediation using SSM Automation
-B) SSM State Manager with a scheduled association
-C) SSM Run Command with an EventBridge scheduled rule every hour
-D) CloudFormation with drift detection
-E) Both A and B are equally appropriate
+- A) AWS Config with auto-remediation using SSM Automation
+- B) SSM State Manager with a scheduled association
+- C) SSM Run Command with an EventBridge scheduled rule every hour
+- D) CloudFormation with drift detection
+- E) Both A and B are equally appropriate
 
 **Correct: B**
 
@@ -426,11 +421,11 @@ Explanation: SSM State Manager is specifically designed for maintaining desired 
 
 **Q7.** An e-commerce company wants to run automated tasks (backup snapshots, scale down dev instances) every weeknight between 11pm–midnight. The tasks should stop starting new executions 15 minutes before midnight. They need to verify task completion status. Which SSM feature is DESIGNED for this use case?
 
-A) SSM Run Command with EventBridge cron rule
-B) SSM Automation with a CloudWatch Events schedule
-C) SSM Maintenance Windows with duration=1hr and cutoff=15min
-D) AWS Lambda triggered by EventBridge
-E) SSM State Manager with a rate expression
+- A) SSM Run Command with EventBridge cron rule
+- B) SSM Automation with a CloudWatch Events schedule
+- C) SSM Maintenance Windows with duration=1hr and cutoff=15min
+- D) AWS Lambda triggered by EventBridge
+- E) SSM State Manager with a rate expression
 
 **Correct: C**
 
@@ -440,11 +435,11 @@ Explanation: SSM Maintenance Windows is the designed service for scheduled maint
 
 **Q8.** A company is migrating from a traditional data center. They use Chef cookbooks extensively for server configuration management and have invested 3 years in developing them. They want to use AWS but leverage their existing Chef investments with minimal changes. Which service should they use?
 
-A) AWS Systems Manager State Manager
-B) AWS CloudFormation with cfn-init
-C) AWS OpsWorks for Chef Automate
-D) AWS OpsWorks Stacks
-E) AWS Elastic Beanstalk
+- A) AWS Systems Manager State Manager
+- B) AWS CloudFormation with cfn-init
+- C) AWS OpsWorks for Chef Automate
+- D) AWS OpsWorks Stacks
+- E) AWS Elastic Beanstalk
 
 **Correct: C**
 
@@ -454,11 +449,11 @@ Explanation: OpsWorks for Chef Automate is a fully managed Chef Automate server 
 
 **Q9.** A developer stores an API key in SSM Parameter Store as a SecureString. Another team member stored a database password in Secrets Manager. A compliance requirement says all secrets must be rotated every 90 days automatically without application changes. The database is Amazon RDS. Which statement is CORRECT?
 
-A) Both services support automatic rotation natively for all secret types
-B) SSM Parameter Store supports automatic rotation; Secrets Manager does not
-C) Secrets Manager supports automatic rotation for RDS; SSM Parameter Store requires a Lambda function for rotation
-D) Neither service supports automatic rotation; you must use AWS Key Management Service
-E) SSM Parameter Store Advanced tier supports automatic rotation natively
+- A) Both services support automatic rotation natively for all secret types
+- B) SSM Parameter Store supports automatic rotation; Secrets Manager does not
+- C) Secrets Manager supports automatic rotation for RDS; SSM Parameter Store requires a Lambda function for rotation
+- D) Neither service supports automatic rotation; you must use AWS Key Management Service
+- E) SSM Parameter Store Advanced tier supports automatic rotation natively
 
 **Correct: C**
 
@@ -468,11 +463,11 @@ Explanation: Secrets Manager has BUILT-IN automatic rotation for RDS, Redshift, 
 
 **Q10.** A company has a CloudFormation stack managing production infrastructure. They want to update the stack to change the RDS instance type from db.t3.medium to db.r5.large. Before applying the change, they want to see exactly which resources will be modified, replaced, or deleted. What should they do?
 
-A) Run the stack update and monitor the Events tab in CloudFormation console
-B) Enable CloudFormation Drift Detection before the update
-C) Create a Change Set for the stack update and review it before execution
-D) Deploy the changes to a staging stack first using StackSets
-E) Use CloudTrail to preview the API calls CloudFormation will make
+- A) Run the stack update and monitor the Events tab in CloudFormation console
+- B) Enable CloudFormation Drift Detection before the update
+- C) Create a Change Set for the stack update and review it before execution
+- D) Deploy the changes to a staging stack first using StackSets
+- E) Use CloudTrail to preview the API calls CloudFormation will make
 
 **Correct: C**
 
@@ -482,11 +477,11 @@ Explanation: Change Sets allow you to preview proposed changes to a stack (add/m
 
 **Q11.** A company's S3 static website is accessible at `http://www.example.com.s3-website-us-east-1.amazonaws.com` but NOT at `https://www.example.com`. Users are reporting that some corporate firewalls block HTTP traffic. What is the MOST appropriate solution with LEAST operational overhead?
 
-A) Enable S3 Transfer Acceleration on the bucket
-B) Create a CloudFront distribution with the S3 bucket as origin, request an ACM certificate, and update Route 53
-C) Migrate the website to EC2 with nginx and an Application Load Balancer
-D) Enable S3 Requester Pays for the bucket
-E) Use AWS Certificate Manager to attach an SSL certificate directly to the S3 bucket
+- A) Enable S3 Transfer Acceleration on the bucket
+- B) Create a CloudFront distribution with the S3 bucket as origin, request an ACM certificate, and update Route 53
+- C) Migrate the website to EC2 with nginx and an Application Load Balancer
+- D) Enable S3 Requester Pays for the bucket
+- E) Use AWS Certificate Manager to attach an SSL certificate directly to the S3 bucket
 
 **Correct: B**
 
@@ -496,11 +491,11 @@ Explanation: S3 website endpoints do NOT support HTTPS natively. You must add Cl
 
 **Q12.** An application needs to retrieve different database connection strings depending on whether it's running in dev, staging, or production environments. The strings must be encrypted at rest and the application must be able to retrieve the correct string without hardcoding environment-specific logic. Which approach BEST achieves this?
 
-A) Store all strings in an S3 bucket with SSE-S3 encryption and use bucket policies
-B) Use SSM Parameter Store with hierarchical naming like `/dev/db/connection`, `/staging/db/connection`, `/prod/db/connection` with SecureString type, and use the environment prefix at runtime
-C) Use AWS Secrets Manager with separate secrets per environment and Lambda rotation
-D) Store strings in AWS KMS as encrypted data keys
-E) Use environment variables in EC2 launch configurations per environment
+- A) Store all strings in an S3 bucket with SSE-S3 encryption and use bucket policies
+- B) Use SSM Parameter Store with hierarchical naming like `/dev/db/connection`, `/staging/db/connection`, `/prod/db/connection` with SecureString type, and use the environment prefix at runtime
+- C) Use AWS Secrets Manager with separate secrets per environment and Lambda rotation
+- D) Store strings in AWS KMS as encrypted data keys
+- E) Use environment variables in EC2 launch configurations per environment
 
 **Correct: B**
 
@@ -510,11 +505,11 @@ Explanation: SSM Parameter Store with hierarchical paths is purpose-built for th
 
 **Q13.** A company deploys infrastructure using CloudFormation. After several manual changes made by operations staff directly in the AWS Console, the actual infrastructure differs from the CloudFormation template. The team wants to identify ALL differences between the live infrastructure and the template definition. Which feature addresses this?
 
-A) CloudFormation Change Sets
-B) AWS Config Configuration Recorder
-C) CloudFormation Drift Detection
-D) AWS Trusted Advisor
-E) AWS Systems Manager Inventory
+- A) CloudFormation Change Sets
+- B) AWS Config Configuration Recorder
+- C) CloudFormation Drift Detection
+- D) AWS Trusted Advisor
+- E) AWS Systems Manager Inventory
 
 **Correct: C**
 
@@ -524,11 +519,11 @@ Explanation: CloudFormation Drift Detection compares the current live state of s
 
 **Q14.** A company has 500 EC2 instances and needs to run a custom Python script on all instances to collect application-specific metrics. The script must run WITHOUT logging into each instance, results must be stored in S3, and failed executions on individual instances must NOT stop execution on the remaining instances. Which service and configuration achieves this?
 
-A) SSM Run Command with AWS-RunPythonScript document, S3 output, and error threshold set to 100%
-B) SSM Automation with a custom automation document
-C) AWS Lambda triggered by EventBridge with EC2 metadata permissions
-D) AWS Batch with a managed compute environment
-E) SSM State Manager with a Python script association
+- A) SSM Run Command with AWS-RunPythonScript document, S3 output, and error threshold set to 100%
+- B) SSM Automation with a custom automation document
+- C) AWS Lambda triggered by EventBridge with EC2 metadata permissions
+- D) AWS Batch with a managed compute environment
+- E) SSM State Manager with a Python script association
 
 **Correct: A**
 
@@ -538,11 +533,11 @@ Explanation: SSM Run Command with AWS-RunShellScript (or AWS-RunPythonScript) is
 
 **Q15.** A startup wants to deploy a complete web application stack (VPC, subnets, EC2, RDS, ALB, Security Groups) using infrastructure as code. They want to be able to recreate the IDENTICAL environment in different AWS regions and tear it all down as a single operation. Which service is MOST appropriate?
 
-A) AWS Elastic Beanstalk
-B) AWS OpsWorks Stacks
-C) AWS CloudFormation with parameterized templates
-D) AWS Systems Manager Automation
-E) AWS CodeDeploy
+- A) AWS Elastic Beanstalk
+- B) AWS OpsWorks Stacks
+- C) AWS CloudFormation with parameterized templates
+- D) AWS Systems Manager Automation
+- E) AWS CodeDeploy
 
 **Correct: C**
 
@@ -552,11 +547,11 @@ Explanation: CloudFormation with parameterized templates is the designed solutio
 
 **Q16.** A company's CloudFormation stack contains an RDS database and an EC2 instance. They realize a developer accidentally deployed a stack without a deletion policy, and they need to delete the stack for cost savings. However, they want to PRESERVE the RDS data. What should they do BEFORE deleting the stack?
 
-A) Create a CloudFormation Change Set to remove only the EC2 instance
-B) Add a DeletionPolicy: Snapshot or Retain attribute to the RDS resource in the template, then update the stack, then delete
-C) Manually create an RDS snapshot, then delete the stack — the snapshot persists independently
-D) Use CloudFormation StackSets to migrate the RDS to another stack
-E) Both B and C are valid approaches
+- A) Create a CloudFormation Change Set to remove only the EC2 instance
+- B) Add a DeletionPolicy: Snapshot or Retain attribute to the RDS resource in the template, then update the stack, then delete
+- C) Manually create an RDS snapshot, then delete the stack — the snapshot persists independently
+- D) Use CloudFormation StackSets to migrate the RDS to another stack
+- E) Both B and C are valid approaches
 
 **Correct: E**
 
@@ -566,11 +561,11 @@ Explanation: Both approaches work. Option B adds a `DeletionPolicy: Snapshot` to
 
 **Q17.** A company wants to implement SSM Session Manager for their EC2 instances in private subnets. The instances use IMDSv2 and have no internet connectivity. An engineer sets up Session Manager but connections fail. Which combination of actions will MOST LIKELY fix the issue? (Select TWO)
 
-A) Add a NAT Gateway to the private subnet
-B) Create VPC interface endpoints for `ssm`, `ssmmessages`, and `ec2messages`
-C) Open inbound port 443 on the instance security group
-D) Attach an IAM role with `AmazonSSMManagedInstanceCore` policy to the instances
-E) Enable VPC Flow Logs on the subnet
+- A) Add a NAT Gateway to the private subnet
+- B) Create VPC interface endpoints for `ssm`, `ssmmessages`, and `ec2messages`
+- C) Open inbound port 443 on the instance security group
+- D) Attach an IAM role with `AmazonSSMManagedInstanceCore` policy to the instances
+- E) Enable VPC Flow Logs on the subnet
 
 **Correct: B and D**
 
@@ -580,11 +575,11 @@ Explanation: For Session Manager to work in private subnets without internet: (1
 
 **Q18.** A company stores application configuration in SSM Parameter Store. They have 15,000 parameters and need some parameters to automatically expire after 90 days, triggering an EventBridge event for rotation. Standard Tier parameters are currently in use. What change is required?
 
-A) Migrate to Secrets Manager for expiration support
-B) Upgrade to SSM Parameter Store Advanced Tier to enable parameter policies
-C) Create a Lambda function triggered by EventBridge every day to check parameter ages
-D) Use SSM Maintenance Windows to delete expired parameters
-E) No change needed — Standard Tier supports parameter policies
+- A) Migrate to Secrets Manager for expiration support
+- B) Upgrade to SSM Parameter Store Advanced Tier to enable parameter policies
+- C) Create a Lambda function triggered by EventBridge every day to check parameter ages
+- D) Use SSM Maintenance Windows to delete expired parameters
+- E) No change needed — Standard Tier supports parameter policies
 
 **Correct: B**
 
@@ -594,11 +589,11 @@ Explanation: Parameter policies (expiration, expiration notification, no-change 
 
 **Q19.** A team is using CloudFormation to manage a stack that includes an S3 bucket. When they attempt to delete the stack, the deletion fails with an error. The S3 bucket contains objects. What is the CORRECT explanation and solution?
 
-A) CloudFormation cannot delete S3 buckets — you must exclude them from the stack
-B) The S3 bucket must be emptied before CloudFormation can delete it; the team must empty the bucket first, then retry stack deletion
-C) Add DeletionPolicy: Delete to the S3 resource in the template
-D) Both B and C are valid — B is a manual workaround, C makes it automatic but requires first emptying the bucket
-E) Create a custom resource backed by Lambda to empty and delete the bucket
+- A) CloudFormation cannot delete S3 buckets — you must exclude them from the stack
+- B) The S3 bucket must be emptied before CloudFormation can delete it; the team must empty the bucket first, then retry stack deletion
+- C) Add DeletionPolicy: Delete to the S3 resource in the template
+- D) Both B and C are valid — B is a manual workaround, C makes it automatic but requires first emptying the bucket
+- E) Create a custom resource backed by Lambda to empty and delete the bucket
 
 **Correct: D** (with B being the immediate fix and E being the automated long-term solution, but D as presented in the options is most accurate)
 
@@ -608,11 +603,11 @@ Explanation: CloudFormation cannot delete an S3 bucket that contains objects —
 
 **Q20.** A company has a multi-account AWS organization. They need to deploy a baseline CloudFormation stack (VPC, security groups, IAM roles) to ALL 50 accounts in the organization automatically, including new accounts that join in the future. Which feature meets this requirement with LEAST operational overhead?
 
-A) CloudFormation Nested Stacks deployed from the management account
-B) AWS CloudFormation StackSets with AWS Organizations integration and automatic deployment enabled
-C) AWS Service Catalog with a portfolio shared to all accounts
-D) AWS Control Tower with Account Vending Machine
-E) CloudFormation Change Sets deployed via CodePipeline to each account
+- A) CloudFormation Nested Stacks deployed from the management account
+- B) AWS CloudFormation StackSets with AWS Organizations integration and automatic deployment enabled
+- C) AWS Service Catalog with a portfolio shared to all accounts
+- D) AWS Control Tower with Account Vending Machine
+- E) CloudFormation Change Sets deployed via CodePipeline to each account
 
 **Correct: B**
 
