@@ -1,6 +1,8 @@
-<img width="1439" height="16384" alt="image" src="https://github.com/user-attachments/assets/43ee8520-b49e-486a-9f85-7eeba22e0601" /># Module 11 — Creating Automated & Repeatable Deployments
-<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/7bfa733b-4276-4127-9062-ba7b755fa7c3" />
+# Module 11 — Creating Automated & Repeatable Deployments
 
+<img width="1000" height="400" alt="image" src="https://github.com/user-attachments/assets/7bfa733b-4276-4127-9062-ba7b755fa7c3" />
+
+----
 
 ##  TOPIC 1 — Configuration Management in the Cloud
 
@@ -44,7 +46,7 @@ There are three main approaches:
 
 ------
 
-##  TOPIC 2 — AMI Building Strategy (Deep Dive)
+##  TOPIC 2 — AMI Building Strategy
 
 ### Custom AMIs as a Base Configuration
 
@@ -206,7 +208,7 @@ This is the most heavily tested topic in this module.
 
 **Drift Detection** — CloudFormation can detect when a resource's actual configuration differs from the template definition. This happens when someone manually edits a resource outside CloudFormation.
 
-### Template Structure — Deep Dive
+### Template Structure 
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"   # Optional but recommended
