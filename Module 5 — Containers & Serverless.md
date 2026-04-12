@@ -20,19 +20,16 @@ In **serverless deployment**, AWS handles ALL of that. You only care about:
 
 ---
 
-## 🔷 TOPIC 2: AWS Lambda — Full Deep Dive
+## 🔷 TOPIC 2: AWS Lambda
 
 ### What Is Lambda?
 Lambda is a **serverless compute service** that runs your code in response to events, without you provisioning or managing servers.
 
 ### How It Works (The 4-Step Flow)
 
-```
-1. Upload code to Lambda
-2. Configure a trigger (event source)
-3. Lambda runs code ONLY when triggered
-4. Pay only for compute time used (per 100ms)
-```
+<img width="1258" height="356" alt="image" src="https://github.com/user-attachments/assets/b25fa176-5ae5-479a-9f9a-a873b97bc235" />
+
+---
 
 ### Lambda Triggers — What Can Invoke Lambda?
 
@@ -91,7 +88,7 @@ Step 5: Configure trigger and test invocation
 Step 6: Monitor with CloudWatch Logs and Metrics
 ```
 
-### 📌 Scenario: EC2 Start/Stop Automation
+###  Scenario: EC2 Start/Stop Automation
 
 **Business problem:** A company pays for EC2 instances running 24/7 but only uses them during business hours.
 
@@ -106,7 +103,7 @@ Step 6: Monitor with CloudWatch Logs and Metrics
 
 ---
 
-## 🔷 TOPIC 3: APIs and REST — Deep Dive
+## 🔷 TOPIC 3: APIs and REST
 
 ### What Is an API?
 
@@ -164,7 +161,7 @@ Body:      {"item": "coffee", "quantity": 2}  ← used in POST/PUT
 
 ---
 
-## 🔷 TOPIC 4: Amazon API Gateway — Full Deep Dive
+## 🔷 TOPIC 4: Amazon API Gateway
 
 ### What Is API Gateway?
 
@@ -203,7 +200,7 @@ AWS Lambda    Amazon EC2    Amazon DynamoDB
 (Serverless)  (Traditional) (Database)
 ```
 
-### 📌 Scenario: Serverless Web Application
+###  Scenario: Serverless Web Application
 
 **Architecture:**
 1. **Amazon S3** — Hosts static content (HTML, CSS, JavaScript)
