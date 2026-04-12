@@ -19,7 +19,7 @@ A **VPC (Virtual Private Cloud)** is your own private, logically isolated networ
 - Every AWS account gets a **default VPC** with CIDR `172.31.0.0/16`
 
 Here's how a full VPC is structured:---
-<img width="1440" height="1102" alt="image" src="https://github.com/user-attachments/assets/9bd12e6a-a1d5-4f6c-9c7f-47d7e4d33eba" />
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/9bd12e6a-a1d5-4f6c-9c7f-47d7e4d33eba" />
 
 
 ##  2. CIDR Notation — Must Know for the Exam
@@ -50,7 +50,7 @@ A **subnet** is a slice of your VPC's IP range, confined to **one Availability Z
 ##  4. VPC Connectivity Options — Most Exam Questions Come From Here
 
 This is the most tested area. Here's the full picture:
-<img width="1440" height="974" alt="image" src="https://github.com/user-attachments/assets/d0776d0a-51f0-45f5-827a-7b7f4ab71836" />
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/d0776d0a-51f0-45f5-827a-7b7f4ab71836" />
 
 Now let me break each one down for the exam:
 
