@@ -1,13 +1,13 @@
-# 🌐 Module 7: AWS Networking & Amazon VPC
+#  Module 7: AWS Networking & Amazon VPC
 
 
-## 📌 Section 1: What is Amazon VPC?
+##  Section 1: What is Amazon VPC?
 
 Think of AWS as a massive apartment building. **Your VPC is your private apartment** — completely isolated from others, with your own rooms (subnets), locks (security groups), hallways (route tables), and doors (gateways).Here's your full structured lesson on AWS Networking. I'll teach you concept by concept with diagrams, exactly how it will appear in the exam.
 
 ---
 
-## 🏗️ 1. Amazon VPC — The Foundation
+##  1. Amazon VPC — The Foundation
 
 A **VPC (Virtual Private Cloud)** is your own private, logically isolated network inside AWS. Think of it like building a private office floor inside a shared skyscraper — you control all the rooms, doors, and security.
 
@@ -22,7 +22,7 @@ Here's how a full VPC is structured:---
 <img width="1440" height="1102" alt="image" src="https://github.com/user-attachments/assets/9bd12e6a-a1d5-4f6c-9c7f-47d7e4d33eba" />
 
 
-## 📐 2. CIDR Notation — Must Know for the Exam
+##  2. CIDR Notation — Must Know for the Exam
 
 | CIDR | Address Range | # of IPs |
 |---|---|---|
@@ -40,28 +40,28 @@ Here's how a full VPC is structured:---
 
 ---
 
-## 🛣️ 3. Subnets & Route Tables
+##  3. Subnets & Route Tables
 
 A **subnet** is a slice of your VPC's IP range, confined to **one Availability Zone**. What makes a subnet "public" vs "private" is purely its **route table**:**Key rule:** A subnet is public **only if** its route table has a `0.0.0.0/0 → internet gateway` entry. That's it.
 <img width="1440" height="636" alt="image" src="https://github.com/user-attachments/assets/61376368-768f-49a4-89c6-6eb97e25d372" />
 
 ---
 
-## 🔌 4. VPC Connectivity Options — Most Exam Questions Come From Here
+##  4. VPC Connectivity Options — Most Exam Questions Come From Here
 
 This is the most tested area. Here's the full picture:
 <img width="1440" height="974" alt="image" src="https://github.com/user-attachments/assets/d0776d0a-51f0-45f5-827a-7b7f4ab71836" />
 
 Now let me break each one down for the exam:
 
-### 🔹 NAT Gateway
+###  NAT Gateway
 - Lets **private subnet instances reach the internet** (for updates, patches) but **blocks inbound internet connections**
 - AWS-managed, built-in redundancy within an AZ
 - Needs an **Elastic IP address**
 - You must update the **private subnet's route table** to point `0.0.0.0/0 → NAT gateway`
 - Best practice: one NAT gateway **per AZ** for high availability
 
-### 🔹 VPC Peering
+###  VPC Peering
 - Direct private connection between **two VPCs** (same or different accounts, same or different regions)
 - Traffic stays on **AWS backbone** — no internet
 - **Critical limitations:**
@@ -69,34 +69,34 @@ Now let me break each one down for the exam:
   - No **transitive peering** — if A↔B and B↔C, then A cannot reach C through B
   - No internet gateway sharing between peers
 
-### 🔹 Site-to-Site VPN
+###  Site-to-Site VPN
 - Encrypted **IPsec tunnel** over the public internet between your VPC and corporate datacenter
 - Needs: **Virtual Private Gateway (VGW)** on AWS side + **Customer Gateway** on your side
 - Each VGW has **two tunnels** for redundancy
 
-### 🔹 AWS Direct Connect
+###  AWS Direct Connect
 - A **physical, dedicated private line** from your datacenter to AWS — no internet involved
 - More reliable, consistent bandwidth, lower latency than VPN
 - Can be combined with VPN (Direct Connect + VPN) for encrypted dedicated connection
 
-### 🔹 AWS VPN CloudHub
+###  AWS VPN CloudHub
 - **Hub-and-spoke** model — multiple branch offices connect to a single VGW
 - Branches can communicate with each other **through AWS**
 
-### 🔹 VPC Endpoints (no internet required!)
+###  VPC Endpoints (no internet required!)
 | Type | Used For | How |
 |---|---|---|
 | **Interface endpoint** (PrivateLink) | Most AWS services, custom services | Creates an ENI with private IP |
 | **Gateway endpoint** | S3 and DynamoDB **only** | Added as a route in the route table |
 
-### 🔹 AWS Transit Gateway
+###  AWS Transit Gateway
 - The **"network hub"** — connect thousands of VPCs and on-prem networks to one central gateway
 - Eliminates the mesh of peering connections
 - Supports route propagation automatically
 
 ---
 
-## 🔒 5. Securing Your Network — Layered Defense
+##  5. Securing Your Network — Layered Defense
 <img width="1440" height="720" alt="image" src="https://github.com/user-attachments/assets/9c2b36fa-b604-4571-b108-f9670088f41a" />
 
 
@@ -115,7 +115,7 @@ AWS uses a **4-layer defense model**:### Security Groups vs NACLs — The Most C
 
 ---
 
-## 🏰 6. Bastion Host
+##  6. Bastion Host
 
 A **Bastion host** is a "jump server" in your public subnet that lets admins securely SSH into private instances.
 
@@ -125,7 +125,7 @@ A **Bastion host** is a "jump server" in your public subnet that lets admins sec
 
 ---
 
-## 🔧 7. Troubleshooting VPC — Exam Checklist
+##  7. Troubleshooting VPC — Exam Checklist
 
 When an EC2 instance can't be reached, check in this order:
 
@@ -140,7 +140,7 @@ For **NAT troubleshooting:** Check if the private subnet's route table points `0
 
 ---
 
-## 📝 Key SAA-C03 Exam Tips
+##  Key SAA-C03 Exam Tips
 
 **Scenario → Answer mapping** (commonly tested):
 
@@ -164,4 +164,3 @@ For **NAT troubleshooting:** Check if the private subnet's route table points `0
 
 ---
 
-Ready to test your understanding? Want me to fire MCQ practice questions at you on this topic? 🎯
