@@ -1,4 +1,4 @@
-# AWS Module 2: Tooling & Automation — Deep Dive for SAA Exam
+# AWS Module 2: Tooling & Automation
 
 
 ## 1. AWS Systems Manager (SSM)
