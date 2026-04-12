@@ -224,42 +224,9 @@ Scenarios:
 
 ## Instance Selection Decision Tree - Mindmap
 
-```
-CHOOSE EC2 INSTANCE TYPE?
-│
-├─ What's your bottleneck?
-│  │
-│  ├─ CPU-bound (encoding, ML)
-│  │  └─ COMPUTE (C-family)
-│  │     └─ c5, c6, c7
-│  │
-│  ├─ Memory-bound (caching, in-memory DB)
-│  │  └─ MEMORY (R-family)
-│  │     └─ r5, r6, r7
-│  │
-│  ├─ I/O-bound (databases, NoSQL)
-│  │  └─ STORAGE (I-family)
-│  │     └─ i3, i4
-│  │
-│  ├─ GPU-bound (ML, graphics)
-│  │  └─ ACCELERATED (P, G-family)
-│  │     └─ p3, p4, g4
-│  │
-│  └─ Balanced / Unknown
-│     └─ GENERAL (M-family)
-│        └─ m5, m6, m7
-│
-└─ What's your usage pattern?
-   │
-   ├─ Sustained load (24/7 server)
-   │  └─ Standard instances (M, C, R, I)
-   │
-   ├─ Intermittent/Variable load
-   │  └─ T-family (Burstable)
-   │
-   └─ Need cost optimization
-      └─ Consider generation (newer = better price/perf)
-```
+<img width="1536" height="800" alt="Wide EC2 Instance Ty" src="https://github.com/user-attachments/assets/c4bd0fb6-e145-4e87-828f-41c7cba3d22d" />
+
+----
 
 ### EXAM TRAP #2: Instance Type Selection
 **Scenario**: "Application using 60% CPU and 40% memory constantly"
