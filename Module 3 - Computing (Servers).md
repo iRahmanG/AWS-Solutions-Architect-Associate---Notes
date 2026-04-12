@@ -239,25 +239,11 @@ Scenarios:
 
 ## Storage Architecture Overview
 
-```
-┌──────────────────────────────────────────────────────┐
-│              EC2 INSTANCE                            │
-├──────────────────────────────────────────────────────┤
-│                                                      │
-│  ┌─────────────────────────────────────────────┐   │
-│  │   ROOT VOLUME (/ for Linux, C: for Win)    │   │
-│  │   ✓ EBS (default)                          │   │
-│  │   ✓ Instance Store (for some instances)    │   │
-│  └─────────────────────────────────────────────┘   │
-│                                                      │
-│  ┌─────────────────────────────────────────────┐   │
-│  │   ADDITIONAL VOLUMES (mounted at launch)    │   │
-│  │   ✓ EBS only                                │   │
-│  │   ✓ Instance Store (if supported)           │   │
-│  └─────────────────────────────────────────────┘   │
-│                                                      │
-└──────────────────────────────────────────────────────┘
-```
+<div align = "center">
+         <img width="731" height="322" alt="image" src="https://github.com/user-attachments/assets/070ab197-ce82-4554-ae44-078188fbf6db" />
+</div>
+
+---
 
 ## 1. ELASTIC BLOCK STORE (EBS) - PRIMARY STORAGE
 
