@@ -6,6 +6,8 @@
 AWS Systems Manager is a unified interface for managing your AWS and on-premises infrastructure. Think of it as the "remote control" for your entire fleet of EC2 instances and servers.
 
 ### How SSM Works (Architecture)
+<img width="1408" height="768" alt="image_aa72be2e" src="https://github.com/user-attachments/assets/47fe090e-1f0b-4bd6-9b41-1347af0cacf3" />
+
 
 SSM requires the **SSM Agent** to be installed on instances. The agent communicates with the SSM service endpoint over HTTPS (outbound port 443). This means:
 - No inbound ports need to be opened on your security groups
