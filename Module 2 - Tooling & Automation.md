@@ -237,7 +237,25 @@ OpsWorks is a configuration management service based on Chef and Puppet. It enab
 
 **Exam trap**: OpsWorks Stacks ≠ CloudFormation. OpsWorks manages the configuration and deployment lifecycle (install, configure, deploy, undeploy, shutdown). CloudFormation manages infrastructure provisioning. They complement each other.
 
+### AWS OpsWorks vs. CloudFormation
+
+| Feature | AWS CloudFormation | AWS OpsWorks |
+|---|---|---|
+| Service Category | Infrastructure as Code (IaC) | Configuration Management |
+| Core Technology | Declarative templates (YAML/JSON) | Managed Chef or Puppet |
+| Scope | Broad: Provisions almost all AWS resources (VPC, S3, IAM, Lambda, etc.). | Specific: Focuses on server-level software, OS configuration, and app deployment. |
+| Unit of Work | Stacks: A group of resources managed as a single unit. | Layers: Functional components of an app (e.g., Web, DB, Load Balancer). |
+| Use Case | Creating a repeatable, standardized AWS environment from scratch. | Managing software packages, patches, and app state on EC2 or on-prem. |
+| Abstraction Level | Low-level: You define exactly what resources you want. | High-level: Uses "Cookbooks" and "Recipes" to automate server setup. |
+| Hybrid Support | Mostly AWS-focused (limited on-prem support). | Excellent for Hybrid Cloud; manage on-prem servers alongside EC2. |
+
+### Summary
+
+* Use CloudFormation when you want to define your entire infrastructure (the "what").
+* Use OpsWorks when you want to automate server configuration and app deployment using Chef/Puppet (the "how").
+
 ---
+
 
 ## 6. Amazon S3 Static Website Hosting
 
