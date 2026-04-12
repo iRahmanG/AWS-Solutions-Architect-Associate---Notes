@@ -1,10 +1,13 @@
 # Module 1 - Systems Operation
-<img width="1440" height="1736" alt="image" src="https://github.com/user-attachments/assets/b531d2ee-8f7b-4acb-b419-b63bdcba1fb7" />
+<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/b531d2ee-8f7b-4acb-b419-b63bdcba1fb7" />
 
 
 ## Topic 1: Systems Operations in the Cloud
 
 **Core Concept:** Cloud sys ops = managing complex computing systems across the full lifecycle: Build → Test → Deploy → Monitor → Maintain → Safeguard.
+
+<img width="1440" height="678" alt="image" src="https://github.com/user-attachments/assets/2ac3bad4-d12b-4da3-ae12-029e29b69102" />
+
 
 **Automation enables three critical capabilities:**
 1. Repeatable deployment of infrastructure and applications on demand (same CloudFormation template → Dev, Test, Prod)
@@ -20,6 +23,9 @@
 ## Topic 2: AWS Global Infrastructure and Scope
 
 This is one of the most tested topics in SAA-C03.
+
+<img width="1200" height="900" alt="image" src="https://github.com/user-attachments/assets/a28d092b-c666-4e25-b25a-02cdc55f2b04" />
+
 
 **Three scopes — services belong to exactly one:**
 
@@ -66,6 +72,9 @@ This is one of the most tested topics in SAA-C03.
 ## Topic 4: AWS IAM
 
 **What IAM does:** Centrally manages authentication (who are you?) and authorization (what can you do?) for all AWS resources. Free service included with every AWS account.
+
+<img width="1440" height="1200" alt="image" src="https://github.com/user-attachments/assets/00c57e79-dea7-4f6a-a398-03898f185b7f" />
+
 
 ### IAM Components
 
@@ -162,7 +171,9 @@ aws configure                           # Set credentials
 3. Default region name (e.g., us-east-1)
 4. Default output format (json / text / table)
 
-<img width="1440" height="932" alt="image" src="https://github.com/user-attachments/assets/28324a24-ebf7-4743-a0ad-5519a2dc9769" />
+
+<img width="1440" height="1200" alt="image" src="https://github.com/user-attachments/assets/a3466bdb-93cd-43df-8bfe-2b7b3df5f7f9" />
+
 
 ### Command Structure
 
