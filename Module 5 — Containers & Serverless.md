@@ -191,14 +191,8 @@ Think of it as the "front door" to your backend services.
 
 ### API Gateway Architecture
 
-```
-Client Apps
-    ↓
-Amazon API Gateway (REST/HTTP/WebSocket API)
-    ↓              ↓              ↓
-AWS Lambda    Amazon EC2    Amazon DynamoDB
-(Serverless)  (Traditional) (Database)
-```
+<img width="756" height="188" alt="image" src="https://github.com/user-attachments/assets/ba86ccfd-974c-4a6a-af9c-325878f6f030" />
+
 
 ###  Scenario: Serverless Web Application
 
@@ -336,6 +330,8 @@ AWS Fargate is a **serverless compute engine for containers**. It works with bot
 
 ### How to Use Fargate (4 Steps)
 
+<img width="900" height="208" alt="image" src="https://github.com/user-attachments/assets/50749c95-6fd9-4f35-a818-6a1f2a294408" />
+
 ```
 1. Build container image (push to ECR)
 2. Specify CPU and memory requirements in Task Definition
@@ -385,6 +381,8 @@ Use Kubernetes to:
 
 ### How EKS Works (4 Steps)
 
+<img width="1232" height="287" alt="image" src="https://github.com/user-attachments/assets/e5058a8e-52e8-434a-bf0f-63c803cbbb41" />
+
 ```
 1. Provision EKS cluster (AWS manages control plane across 3 AZs)
 2. Deploy worker nodes (EC2 instances or Fargate)
@@ -433,13 +431,8 @@ Amazon ECR is a **fully managed Docker container registry** — essentially, it'
 
 ### ECR Workflow
 
-```
-Developer writes code
-    → docker build -t my-app .
-    → docker tag my-app <account>.dkr.ecr.<region>.amazonaws.com/my-app
-    → docker push → ECR Repository
-    → ECS/EKS pulls image from ECR during deployment
-```
+<img width="1232" height="312" alt="image" src="https://github.com/user-attachments/assets/2902f76a-f0b6-4e19-bfe6-718d0da806dd" />
+
 
 ---
 
@@ -461,6 +454,8 @@ AWS Step Functions is a **serverless workflow orchestration service** that lets 
 | **Wait State** | Pause execution for a defined time |
 
 ### How Step Functions Works
+
+<img width="1408" height="600" alt="image_4ea84f42" src="https://github.com/user-attachments/assets/6576e127-7f56-4457-bd4d-9dd13637f7bd" />
 
 ```
 Step 1: Define workflow steps using Amazon States Language (JSON)
