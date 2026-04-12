@@ -261,6 +261,9 @@ OpsWorks is a configuration management service based on Chef and Puppet. It enab
 
 Amazon S3 can serve static content (HTML, CSS, JavaScript, images) directly to end users, without any web servers.
 
+<img width="1408" height="500" alt="image_1fc65f12" src="https://github.com/user-attachments/assets/c384ed61-7bf9-49f3-b575-ac3a781e9bd3" />
+
+
 ### Setup Steps
 
 1. Create an S3 bucket (bucket name must match the custom domain name if using Route 53)
