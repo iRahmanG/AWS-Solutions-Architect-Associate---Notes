@@ -181,6 +181,9 @@ SDKs enable you to integrate AWS services into your applications using native la
 
 CloudFormation is Infrastructure as Code (IaC) — you define your entire AWS environment in a template and CloudFormation creates/updates/deletes it as a unit called a **Stack**.
 
+<img width="1408" height="768" alt="image_86ee96cc" src="https://github.com/user-attachments/assets/4d2f2dcc-fa31-4114-bccc-851e226cf89c" />
+
+
 ### Template Structure
 
 A CloudFormation template has these sections:
