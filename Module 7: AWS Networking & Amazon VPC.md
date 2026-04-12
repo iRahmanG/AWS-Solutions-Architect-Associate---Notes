@@ -3,7 +3,7 @@
 
 ##  Section 1: What is Amazon VPC?
 
-Think of AWS as a massive apartment building. **Your VPC is your private apartment** — completely isolated from others, with your own rooms (subnets), locks (security groups), hallways (route tables), and doors (gateways).Here's your full structured lesson on AWS Networking. I'll teach you concept by concept with diagrams, exactly how it will appear in the exam.
+Think of AWS as a massive apartment building. **Your VPC is your private apartment** — completely isolated from others, with your own rooms (subnets), locks (security groups), hallways (route tables), and doors (gateways).Here's your full structured lesson on AWS Networking. 
 
 ---
 
@@ -52,7 +52,6 @@ A **subnet** is a slice of your VPC's IP range, confined to **one Availability Z
 This is the most tested area. Here's the full picture:
 <img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/d0776d0a-51f0-45f5-827a-7b7f4ab71836" />
 
-Now let me break each one down for the exam:
 
 ###  NAT Gateway
 - Lets **private subnet instances reach the internet** (for updates, patches) but **blocks inbound internet connections**
@@ -97,10 +96,10 @@ Now let me break each one down for the exam:
 ---
 
 ##  5. Securing Your Network — Layered Defense
+AWS uses a **4-layer defense model**:
 <img width="1440" height="720" alt="image" src="https://github.com/user-attachments/assets/9c2b36fa-b604-4571-b108-f9670088f41a" />
 
-
-AWS uses a **4-layer defense model**:### Security Groups vs NACLs — The Most Common Exam Comparison
+### Security Groups vs NACLs — The Most Common Exam Comparison
 
 | Feature | Security Group | Network ACL |
 |---|---|---|
