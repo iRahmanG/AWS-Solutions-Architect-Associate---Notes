@@ -54,6 +54,7 @@ A **subnet** is a slice of your VPC's IP range, confined to **one Availability Z
 
 This is the most tested area. Here's the full picture:
 <img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/d0776d0a-51f0-45f5-827a-7b7f4ab71836" />
+<img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/2655c855-ae94-44a4-9f62-e8b2dab2e8b9" />
 
 
 ###  NAT Gateway
