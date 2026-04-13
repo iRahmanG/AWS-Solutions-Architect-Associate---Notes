@@ -21,18 +21,8 @@ AWS offers a broad array of managed database services, each purpose-built for sp
 
 ### AWS Database Categories
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│               AWS DATABASE SERVICES                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  SQL DATABASES:                    NoSQL DATABASES:          │
-│  ├─ Amazon RDS                     ├─ Amazon DynamoDB       │
-│  ├─ Amazon Aurora                  ├─ Amazon Neptune        │
-│  └─ Amazon Redshift (DW)           └─ Amazon ElastiCache    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
+<img width="1300" height="600" alt="image_f5b903f1" src="https://github.com/user-attachments/assets/ff5f0f3e-9724-4240-9369-0264dd7fc6b0" />
+
 
 ### Quick Reference: Database Selection
 
@@ -204,6 +194,9 @@ Determines CPU, memory, and network capacity:
 ## RDS Backup & Recovery
 
 ### Automated Backups
+
+<img width="1300" height="600" alt="image_4bbaee47" src="https://github.com/user-attachments/assets/36da0888-3e4b-47f8-abc5-fa0ee4fb01b4" />
+
 ```
 Timeline:
 Day 1: Full backup taken
@@ -252,24 +245,8 @@ A failover mechanism that automatically creates a standby replica in a different
 
 ### Architecture
 
-```
-┌─────────────────────────────────────────────────────┐
-│              VPC                                    │
-├─────────────────────────────────────────────────────┤
-│                                                     │
-│  AZ-1              AZ-2                             │
-│  ┌──────────┐      ┌──────────┐                    │
-│  │ PRIMARY  │ SYNC │ STANDBY  │                    │
-│  │   RDS   │◄────►│   RDS    │                    │
-│  └──────────┘      └──────────┘                    │
-│       ▲                                             │
-│       │ Application connects via DNS               │
-│       │ (No code change needed)                     │
-│   ┌───────────┐                                    │
-│   │   App     │                                    │
-│   └───────────┘                                    │
-└─────────────────────────────────────────────────────┘
-```
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/5090ee6e-4fa1-4ee5-871f-2f1911d77773" />
+
 
 ### Key Benefits of Multi-AZ
 
@@ -374,33 +351,8 @@ Primary Instance → Multiple Read Replicas
 
 ### Aurora DB Cluster Components
 
-```
-┌────────────────────────────────────────────────────────────┐
-│           AMAZON AURORA DB CLUSTER                         │
-├────────────────────────────────────────────────────────────┤
-│                                                            │
-│  ┌──────────────────────────────────────────────────┐    │
-│  │         CLUSTER VOLUME (Shared Storage)          │    │
-│  │  Spans 3 Availability Zones                      │    │
-│  │  6 Copies of Data (2 per AZ)                     │    │
-│  └──────────────────────────────────────────────────┘    │
-│          ▲              ▲              ▲                  │
-│          │              │              │                  │
-│  ┌───────┴───┐  ┌───────┴───┐  ┌───────┴───┐            │
-│  │   AZ-1    │  │   AZ-2    │  │   AZ-3    │            │
-│  ├───────────┤  ├───────────┤  ├───────────┤            │
-│  │ PRIMARY   │  │ REPLICA 1 │  │ REPLICA 2 │            │
-│  │ Instance  │  │ Instance  │  │ Instance  │            │
-│  │           │  │           │  │           │            │
-│  │ Read/Write│  │ Read-Only │  │ Read-Only │            │
-│  └───────────┘  └───────────┘  └───────────┘            │
-│        │              │              │                    │
-│        └──────────────┼──────────────┘                    │
-│                       │                                   │
-│            Single Connection Endpoint                    │
-│       (Automatic routing to primary/replicas)           │
-└────────────────────────────────────────────────────────────┘
-```
+<img width="642" height="537" alt="image" src="https://github.com/user-attachments/assets/65266f26-2b1d-4c31-a5ad-67fa6499c25e" />
+
 
 ### Key Architecture Points
 
@@ -610,19 +562,15 @@ Provide multi-region availability and automatic replication
 
 ### Decision Matrix
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Use DynamoDB if...         │ Use RDS if...                 │
-├─────────────────────────────────────────────────────────────┤
-│ ✓ Flexible schema          │ ✓ Fixed schema needed         │
-│ ✓ High horizontal scaling  │ ✓ Vertical scaling sufficient │
-│ ✓ Document/JSON data       │ ✓ Structured relational data  │
-│ ✓ Simple access patterns    │ ✓ Complex queries/JOINs       │
-│ ✓ Real-time apps           │ ✓ Analytics/Reporting         │
-│ ✓ Mobile/IoT               │ ✓ Legacy applications         │
-│ ✓ Eventually consistent ok  │ ✓ ACID compliance critical   │
-└─────────────────────────────────────────────────────────────┘
-```
+| Use DynamoDB if...              | Use RDS if...                  |
+|---------------------------------|--------------------------------|
+| ✓ Flexible schema               | ✓ Fixed schema needed          |
+| ✓ High horizontal scaling       | ✓ Vertical scaling sufficient  |
+| ✓ Document/JSON data            | ✓ Structured relational data   |
+| ✓ Simple access patterns        | ✓ Complex queries/JOINs        |
+| ✓ Real-time apps                | ✓ Analytics/Reporting          |
+| ✓ Mobile/IoT                    | ✓ Legacy applications          |
+| ✓ Eventually consistent ok      | ✓ ACID compliance critical     |
 
 ---
 
@@ -645,20 +593,15 @@ Migrate databases from on-premises or other clouds to AWS with **minimal downtim
 
 ## Key Features
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│      AWS DATABASE MIGRATION SERVICE (DMS)                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ✓ Zero downtime migration                                 │
-│  ✓ Homogenous migrations (Oracle → Oracle)                 │
-│  ✓ Heterogenous migrations (Oracle → MySQL)                │
-│  ✓ Continuous replication                                  │
-│  ✓ Supports most commercial & open-source DBs              │
-│  ✓ Keep applications running during migration              │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+| **AWS DATABASE MIGRATION SERVICE (DMS)** | Description |
+|------------------------------------------|--------------|
+| ✓ Zero downtime migration                | Migrate databases without interrupting applications |
+| ✓ Homogenous migrations (Oracle → Oracle) | Move between same database engines easily |
+| ✓ Heterogenous migrations (Oracle → MySQL) | Convert between different database engines |
+| ✓ Continuous replication                 | Keep source and target databases synchronized |
+| ✓ Supports most commercial & open-source DBs | Works with Oracle, MySQL, PostgreSQL, SQL Server, etc. |
+| ✓ Keep applications running during migration | Ensures minimal disruption to end users |
+
 
 ---
 
@@ -728,46 +671,34 @@ Migrate databases from on-premises or other clouds to AWS with **minimal downtim
 
 ## Supported Source/Target Combinations
 
-```
-┌──────────────────┬──────────────────┬─────────────────┬──────────────┐
-│ SOURCE / TARGET  │ On-Premises      │ AWS Services    │ EC2          │
-├──────────────────┼──────────────────┼─────────────────┼──────────────┤
-│ On-Premises      │ NOT supported    │ ✓ Supported     │ ✓ Supported  │
-├──────────────────┼──────────────────┼─────────────────┼──────────────┤
-│ Amazon RDS / S3  │ ✓ Supported      │ ✓ Supported     │ ✓ Supported  │
-├──────────────────┼──────────────────┼─────────────────┼──────────────┤
-│ Amazon EC2       │ ✓ Supported      │ ✓ Supported     │ ✓ Supported  │
-├──────────────────┼──────────────────┼─────────────────┼──────────────┤
-│ Azure SQL        │ NOT supported    │ ✓ Supported     │ ✓ Supported  │
-└──────────────────┴──────────────────┴─────────────────┴──────────────┘
+| **SOURCE / TARGET** | **On-Premises**     | **AWS Services**     | **EC2**          |
+|----------------------|--------------------|----------------------|------------------|
+| **On-Premises**      | ❌ Not Supported    | ✅ Supported          | ✅ Supported      |
+| **Amazon RDS / S3**  | ✅ Supported        | ✅ Supported          | ✅ Supported      |
+| **Amazon EC2**       | ✅ Supported        | ✅ Supported          | ✅ Supported      |
+| **Azure SQL**        | ❌ Not Supported    | ✅ Supported          | ✅ Supported      |
 
-Key Rule: At least ONE endpoint must be on AWS
-```
+> **Key Rule:** At least **one endpoint must be on AWS**
 
 ---
 
 ## DMS Capabilities
 
 ### Homogenous Migrations
-```
-Oracle → Oracle
-MySQL → MySQL
-PostgreSQL → PostgreSQL
 
-DMS handles:
-✓ Full data migration
-✓ Schema transfer (minimal)
-✓ Ongoing replication
-```
+| **Migration Type**     | **Source → Target** | **DMS Handles** |
+|-------------------------|--------------------|-----------------|
+| Oracle → Oracle         | Homogeneous        | ✓ Full data migration<br>✓ Schema transfer (minimal)<br>✓ Ongoing replication |
+| MySQL → MySQL           | Homogeneous        | ✓ Full data migration<br>✓ Schema transfer (minimal)<br>✓ Ongoing replication |
+| PostgreSQL → PostgreSQL | Homogeneous        | ✓ Full data migration<br>✓ Schema transfer (minimal)<br>✓ Ongoing replication |
 
 ### Heterogenous Migrations
-```
-Oracle → MySQL
-MySQL → PostgreSQL
-SQL Server → Aurora
 
-Requires schema conversion + data migration
-```
+| **Migration Type**     | **Source → Target** | **Requires** |
+|-------------------------|--------------------|--------------|
+| Oracle → MySQL          | Heterogeneous      | ✓ Schema conversion + Data migration |
+| MySQL → PostgreSQL      | Heterogeneous      | ✓ Schema conversion + Data migration |
+| SQL Server → Aurora     | Heterogeneous      | ✓ Schema conversion + Data migration |
 
 ---
 
@@ -828,14 +759,13 @@ Convert database schema and code from source to target database format
 
 ### What SCT Converts
 
-```
-✓ Database schema
-✓ Views
-✓ Stored procedures
-✓ Functions
-✓ Application SQL
-⚠ Some database-specific code (marked for manual review)
-```
+- ✓ Database schema
+- ✓ Views
+- ✓ Stored procedures
+- ✓ Functions
+- ✓ Application SQL
+  
+> ⚠ Some database-specific code (marked for manual review)
 
 ---
 
@@ -1148,46 +1078,35 @@ Why not just DynamoDB alone?
 
 # Section 8: Exam Tips and Strategy
 
-## Key Words Recognition Chart
+##  AWS Database Keyword Mapping
 
-Learn to scan questions for these keywords:
-
-```
-KEYWORD                    SUGGESTS
-─────────────────────────────────────────────────────
-"Graph"                   → Amazon Neptune
-"Highly connected"        → Amazon Neptune
-"Connected data"          → Amazon Neptune
-"Fraud detection"         → Amazon Neptune (graph pattern)
-
-"Real-time"               → DynamoDB or ElastiCache
-"Millisecond latency"     → ElastiCache or DynamoDB
-"Gaming/Leaderboard"      → ElastiCache
-
-"Flexible schema"         → DynamoDB
-"NoSQL"                   → DynamoDB (most likely)
-"Unstructured"            → DynamoDB
-"Mobile app"              → DynamoDB (often)
-"IoT"                     → DynamoDB
-
-"ACID compliance"         → RDS or Aurora (NOT DynamoDB)
-"Complex JOINs"           → RDS or Aurora (NOT DynamoDB)
-"ERP/CRM"                 → RDS
-"Transactions"            → RDS or Aurora
-
-"High throughput"         → Aurora (if SQL) or DynamoDB
-"5x performance"          → Aurora
-"Automatic failover"      → Aurora or RDS Multi-AZ
-
-"Analytics"               → Redshift
-"Terabyte-scale"         → Redshift
-"Data warehouse"         → Redshift
-"Reporting"              → Redshift (if large scale)
-
-"Multi-region"            → Aurora global replicas or Dynamo global tables
-"Disaster recovery"       → RDS Multi-AZ or Aurora
-```
-
+| **Keyword / Context**        | **Suggested AWS Service**                | **Notes / Use Case** |
+|-------------------------------|------------------------------------------|-----------------------|
+| **Graph**                     | Amazon Neptune                          | Purpose-built graph database |
+| **Highly connected**          | Amazon Neptune                          | Ideal for relationship-heavy data |
+| **Connected data**            | Amazon Neptune                          | Great for social networks or knowledge graphs |
+| **Fraud detection**           | Amazon Neptune                          | Detects graph patterns for anomalies |
+| **Real-time**                 | DynamoDB or ElastiCache                 | Low-latency data access |
+| **Millisecond latency**       | ElastiCache or DynamoDB                 | In-memory caching or fast NoSQL |
+| **Gaming / Leaderboard**      | ElastiCache                             | Real-time score updates |
+| **Flexible schema**           | DynamoDB                                | NoSQL, schema-less design |
+| **NoSQL**                     | DynamoDB                                | Key-value and document store |
+| **Unstructured**              | DynamoDB                                | Handles JSON and dynamic attributes |
+| **Mobile app**                | DynamoDB                                | Scalable backend for mobile workloads |
+| **IoT**                       | DynamoDB                                | High throughput for device data |
+| **ACID compliance**           | RDS or Aurora (NOT DynamoDB)            | Transactional consistency |
+| **Complex JOINs**             | RDS or Aurora (NOT DynamoDB)            | Relational query support |
+| **ERP / CRM**                 | RDS                                     | Traditional enterprise systems |
+| **Transactions**              | RDS or Aurora                           | Multi-statement atomic operations |
+| **High throughput**           | Aurora (if SQL) or DynamoDB             | Scalable performance |
+| **5x performance**            | Aurora                                  | Optimized for high-speed SQL workloads |
+| **Automatic failover**        | Aurora or RDS Multi-AZ                  | High availability setup |
+| **Analytics**                 | Redshift                                | Data warehousing and BI |
+| **Terabyte-scale**            | Redshift                                | Handles massive datasets |
+| **Data warehouse**            | Redshift                                | Columnar storage for analytics |
+| **Reporting**                 | Redshift (if large scale)               | Aggregation and visualization workloads |
+| **Multi-region**              | Aurora Global Replicas or DynamoDB Global Tables | Cross-region replication |
+| **Disaster recovery**         | RDS Multi-AZ or Aurora                  | Automatic failover and backup |
 ---
 
 ## Elimination Strategy
@@ -1527,17 +1446,17 @@ Why not Aurora?
 
 ## Exam Day Checklist
 
-✓ Remember RDS 6 engines (Aurora, MySQL, MariaDB, PostgreSQL, Oracle, SQL Server)
-✓ Know Aurora is 5x MySQL, 3x PostgreSQL
-✓ Understand Multi-AZ = automatic failover (1-2 min)
-✓ Know read replicas are asynchronous
-✓ Remember DynamoDB partition key distributes data
-✓ Know DynamoDB global tables for multi-region
-✓ Remember SCT before DMS for heterogenous migrations
-✓ Know at least one DMS endpoint must be AWS
-✓ Understand Neptune for graph/connected data
-✓ Know ElastiCache for real-time/caching
-✓ Know Redshift for large-scale analytics
+- ✓ Remember RDS 6 engines (Aurora, MySQL, MariaDB, PostgreSQL, Oracle, SQL Server)
+- ✓ Know Aurora is 5x MySQL, 3x PostgreSQL
+- ✓ Understand Multi-AZ = automatic failover (1-2 min)
+- ✓ Know read replicas are asynchronous
+- ✓ Remember DynamoDB partition key distributes data
+- ✓ Know DynamoDB global tables for multi-region
+- ✓ Remember SCT before DMS for heterogenous migrations
+- ✓ Know at least one DMS endpoint must be AWS
+- ✓ Understand Neptune for graph/connected data
+- ✓ Know ElastiCache for real-time/caching
+- ✓ Know Redshift for large-scale analytics
 
 ---
 
