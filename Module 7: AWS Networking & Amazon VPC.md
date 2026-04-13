@@ -3,7 +3,10 @@
 
 ##  Section 1: What is Amazon VPC?
 
-Think of AWS as a massive apartment building. **Your VPC is your private apartment** — completely isolated from others, with your own rooms (subnets), locks (security groups), hallways (route tables), and doors (gateways).Here's your full structured lesson on AWS Networking. 
+Think of AWS as a massive apartment building. **Your VPC is your private apartment** — completely isolated from others, with your own rooms (subnets), locks (security groups), hallways (route tables), and doors (gateways).
+
+<img width="1440" height="800" alt="image" src="https://github.com/user-attachments/assets/1afb2235-a855-48d9-8ad3-12d88af18992" />
+
 
 ---
 
@@ -60,6 +63,9 @@ This is the most tested area. Here's the full picture:
 - You must update the **private subnet's route table** to point `0.0.0.0/0 → NAT gateway`
 - Best practice: one NAT gateway **per AZ** for high availability
 
+<img width="1440" height="1102" alt="image" src="https://github.com/user-attachments/assets/d545e0c3-079b-4c99-a898-8e22f3b37a8b" />
+
+
 ###  VPC Peering
 - Direct private connection between **two VPCs** (same or different accounts, same or different regions)
 - Traffic stays on **AWS backbone** — no internet
@@ -87,6 +93,9 @@ This is the most tested area. Here's the full picture:
 |---|---|---|
 | **Interface endpoint** (PrivateLink) | Most AWS services, custom services | Creates an ENI with private IP |
 | **Gateway endpoint** | S3 and DynamoDB **only** | Added as a route in the route table |
+
+<img width="1440" height="974" alt="image" src="https://github.com/user-attachments/assets/91de3ae2-6aab-45ea-b6cb-2f5bb4f1efcf" />
+
 
 ###  AWS Transit Gateway
 - The **"network hub"** — connect thousands of VPCs and on-prem networks to one central gateway
